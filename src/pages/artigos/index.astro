@@ -1,4 +1,5 @@
 ---
+import SiteFooter from '../../components/SiteFooter.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import '../../styles/global.css';
 import { publishedArticles } from '../../data/articles';
@@ -16,7 +17,7 @@ const categoryLabels: Record<string,{en:string;pt:string}> = {
 <meta property="og:type" content="website"/><meta property="og:title" content="Articles & Guides | Mário Sacramento"/>
 <meta property="og:description" content="Practical technology articles and guides."/>
 <title>Articles & Guides | Mário Sacramento</title>
-<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
+<script src="/js/preferences-init.js"></script>
 </head><body class="articles-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <SiteHeader current="articles" />
@@ -27,6 +28,6 @@ const categoryLabels: Record<string,{en:string;pt:string}> = {
 <div class="article-grid">{publishedArticles.map(article=><a class="article-card" href={`/artigos/${article.slug}/`}><span class="article-card-category" data-pt={categoryLabels[article.category].pt} data-en={categoryLabels[article.category].en}>{categoryLabels[article.category].en}</span><h2 data-pt={article.title.pt} data-en={article.title.en}>{article.title.en}</h2><p data-pt={article.summary.pt} data-en={article.summary.en}>{article.summary.en}</p><div class="article-card-footer"><span><time datetime={article.date}>{article.date}</time> · {article.readMinutes} min</span><span data-pt="Ler artigo ↗" data-en="Read article ↗">Read article ↗</span></div></a>)}</div>
 :<div class="articles-empty"><span class="articles-empty-icon" aria-hidden="true">✦</span><h2 data-pt="Os primeiros artigos estão a ser preparados." data-en="The first articles are being prepared.">The first articles are being prepared.</h2><p class="muted" data-pt="Estamos a preparar conteúdos úteis sobre Windows, PowerShell, segurança e desenvolvimento. Os artigos serão publicados depois de revistos." data-en="Useful content about Windows, PowerShell, security and development is in preparation. Articles will be published after review.">Useful content about Windows, PowerShell, security and development is in preparation. Articles will be published after review.</p><a class="btn secondary" href="/" data-pt="Explorar o portfólio" data-en="Explore the portfolio">Explore the portfolio</a></div>}
 </section>
-</main><footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span>TECHNOLOGY SOLUTIONS</span><a href="/" data-pt="Página inicial ↑" data-en="Back to home ↑">Back to home ↑</a></div></footer>
+</main><SiteFooter />
 <script src="/js/preferences.js" defer></script>
 </body></html>
