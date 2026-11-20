@@ -92,3 +92,8 @@ body{overflow-x:hidden}
   .top .navlinks>a{display:inline-flex;flex-shrink:0;white-space:nowrap;font-size:clamp(.72rem,2.8vw,.84rem);min-height:40px;align-items:center}
   .top .switch{min-width:40px;min-height:40px}
 }
+
+/* Reduce expensive backdrop compositing on touch-size displays. */
+@media(max-width:760px){
+  .top{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg)}
+}
