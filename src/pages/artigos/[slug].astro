@@ -1,7 +1,7 @@
 ---
 import '../../styles/global.css';
-import { publishedArticles } from '../../data/articles';
-export function getStaticPaths(){
+export async function getStaticPaths(){
+  const { publishedArticles } = await import('../../data/articles');
   return publishedArticles.map(article=>({params:{slug:article.slug},props:{article}}));
 }
 const { article } = Astro.props;
