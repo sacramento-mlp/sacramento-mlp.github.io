@@ -25,6 +25,7 @@ try {document.documentElement.dataset.theme=localStorage.getItem('theme')==='lig
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="top"><nav class="wrap nav" aria-label="Main navigation">
 <a class="brand" href="#inicio" aria-label="Mário Sacramento home"><img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt="" onerror="this.onerror=null;this.src='/brand/ms-mark.svg'" /><span class="brand-name">Mário Sacramento</span></a>
 <div class="navlinks">
@@ -34,7 +35,7 @@ try {document.documentElement.dataset.theme=localStorage.getItem('theme')==='lig
 <a href="#contacto" data-pt="Contacto" data-en="Contact">Contact</a>
 <div class="nav-controls"><button class="switch" id="lang" type="button" aria-label="Change language">PT</button><button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button></div>
 </div></nav></header>
-<main id="inicio">
+<main id="main-content"><span id="inicio" aria-hidden="true"></span>
 <div class="hero-shell"><div class="wrap hero hero-grid">
 <div class="hero-copy">
 <div class="availability"><span class="status-dot"></span><span data-pt="PORTFÓLIO & DESENVOLVIMENTO DE SOFTWARE" data-en="PORTFOLIO & SOFTWARE DEVELOPMENT">PORTFOLIO & SOFTWARE DEVELOPMENT</span></div>
