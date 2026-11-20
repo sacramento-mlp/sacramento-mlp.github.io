@@ -7,9 +7,9 @@
 .cv-page .cv-role{font-size:1.2rem;font-weight:750;color:var(--accent);margin:0 0 25px}
 .cv-page .cv-hero .lead{font-size:1.08rem;line-height:1.85}
 .cv-page .cv-identity{min-height:380px;border:1px solid #315170;border-radius:22px;background:radial-gradient(circle at center,#1c3b60,#0b1729 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;gap:10px;color:#eef5ff}
-.cv-page .cv-identity img{width:min(180px,75%);height:auto;object-fit:contain}
-.cv-page .cv-identity-name{font-size:1.25rem;font-weight:850;letter-spacing:.09em;text-align:center}
-.cv-page .cv-identity-tag{font-size:.7rem;letter-spacing:.24em;color:#79cbff;text-align:center}
+/* Crop only the duplicate lettering from the approved brand PNG; do not redraw the D4 symbol. */
+.cv-page .cv-symbol-viewport{width:min(270px,82%);aspect-ratio:1.48;overflow:hidden;display:flex;align-items:flex-start;justify-content:center}
+.cv-page .cv-symbol-viewport img{display:block;width:100%;height:auto;max-width:none;object-fit:initial}
 .cv-page .cv-two-col{display:grid;grid-template-columns:1fr 1fr;gap:75px}
 .cv-page .cv-two-col h2{font-size:clamp(2rem,3.7vw,3rem);line-height:1.2}
 .cv-page .cv-two-col .lead{font-size:1.05rem;line-height:1.85}
@@ -27,4 +27,4 @@
 .cv-page .cv-closing h2{font-size:clamp(2rem,4vw,3rem)}
 .cv-page .cv-closing .lead{max-width:720px;margin-bottom:28px}
 @media(max-width:900px){.cv-page .cv-hero-grid{gap:28px}.cv-page .cv-skills{grid-template-columns:1fr}.cv-page .cv-skill{min-height:0}.cv-page .cv-two-col{gap:30px}}
-@media(max-width:760px){.cv-page .cv-hero{padding:55px 0 65px}.cv-page .cv-hero-grid{grid-template-columns:1fr}.cv-page .cv-hero h1{font-size:clamp(3rem,12vw,4.3rem)}.cv-page .cv-hero .lead{font-size:1rem}.cv-page .cv-identity{min-height:240px;padding:25px}.cv-page .cv-identity img{width:130px}.cv-page .cv-identity-name{font-size:1rem}.cv-page .cv-two-col{grid-template-columns:1fr;gap:16px}.cv-page .cv-closing{padding:55px 0}.cv-page .cv-skill{padding:22px}}
+@media(max-width:760px){.cv-page .cv-hero{padding:55px 0 65px}.cv-page .cv-hero-grid{grid-template-columns:1fr}.cv-page .cv-hero h1{font-size:clamp(3rem,12vw,4.3rem)}.cv-page .cv-hero .lead{font-size:1rem}.cv-page .cv-identity{min-height:240px;padding:25px}.cv-page .cv-symbol-viewport{width:min(220px,76%)}.cv-page .cv-identity-name{font-size:1rem}.cv-page .cv-two-col{grid-template-columns:1fr;gap:16px}.cv-page .cv-closing{padding:55px 0}.cv-page .cv-skill{padding:22px}}
