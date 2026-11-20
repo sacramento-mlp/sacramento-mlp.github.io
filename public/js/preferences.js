@@ -13,6 +13,9 @@
     document.querySelectorAll('[data-pt][data-en]').forEach((element) => {
       element.textContent = element.getAttribute('data-' + next) || '';
     });
+    document.querySelectorAll('[data-aria-pt][data-aria-en]').forEach((element) => {
+      element.setAttribute('aria-label', element.getAttribute('data-aria-' + next) || '');
+    });
     if (langButton) {
       langButton.textContent = next === 'pt' ? 'EN' : 'PT';
       langButton.setAttribute('aria-label', next === 'pt' ? 'Switch language to English' : 'Mudar idioma para português');
