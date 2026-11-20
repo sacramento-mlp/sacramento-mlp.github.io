@@ -1,4 +1,5 @@
 ---
+import SiteFooter from '../../components/SiteFooter.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import '../../styles/global.css';
 export function getStaticPaths() {
@@ -24,7 +25,7 @@ const {product}=Astro.props;
 <meta name="theme-color" content="#080f1d"/>
 <link rel="icon" type="image/png" href="/brand/ms-logo.png"/>
 <title>{product.name} | Mário Sacramento</title>
-<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
+<script src="/js/preferences-init.js"></script>
 </head>
 <body class="product-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -48,6 +49,6 @@ const {product}=Astro.props;
 {[{slug:'diskguardian',name:'DiskGuardian',number:'01'},{slug:'windows-technical-toolkit',name:'Windows Technical Toolkit',number:'02'},{slug:'domain-admin-toolkit',name:'Domain Admin Toolkit',number:'03'}].filter(p=>p.slug!==product.slug).map(p=><a class="next-product-card" href={`/produtos/${p.slug}/`}><span class="tag">{p.number} / 03</span><strong>{p.name}</strong><span class="next-arrow" aria-hidden="true">↗</span></a>)}
 </div></section>
 </main>
-<footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span>TECHNOLOGY SOLUTIONS</span><a href="/" data-pt="Página inicial ↑" data-en="Back to home ↑">Back to home ↑</a></div></footer>
+<SiteFooter />
 <script src="/js/preferences.js" defer></script>
 </body></html>
