@@ -1,4 +1,5 @@
 ---
+import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import '../styles/global.css';
 const skills=[
@@ -13,7 +14,7 @@ const skills=[
 <link rel="canonical" href="https://sacramento-mlp.github.io/cv/"/>
 <meta name="theme-color" content="#080f1d"/><link rel="icon" type="image/png" href="/brand/ms-logo.png"/>
 <title>Professional profile | Mário Sacramento</title>
-<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
+<script src="/js/preferences-init.js"></script>
 </head><body class="cv-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <SiteHeader current="cv" />
@@ -26,5 +27,5 @@ const skills=[
 <section class="section-alt"><div class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="02 / ÁREAS TÉCNICAS" data-en="02 / TECHNICAL FOCUS">02 / TECHNICAL FOCUS</span></div><h2 data-pt="Áreas de atuação" data-en="Areas of focus">Areas of focus</h2><div class="cv-skills">{skills.map(s=><article class="cv-skill"><span class="cv-skill-number">{s.n}</span><div><h3 data-pt={s.pt} data-en={s.title}>{s.title}</h3><p data-pt={s.detailPt} data-en={s.detail}>{s.detail}</p></div><span class="cv-skill-arrow" aria-hidden="true">↗</span></article>)}</div></div></section>
 <section class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="03 / PROJETOS" data-en="03 / SELECTED PROJECTS">03 / SELECTED PROJECTS</span></div><div class="cv-two-col"><div><h2 data-pt="Projetos que estou a desenvolver." data-en="Projects in development.">Projects in development.</h2><p class="muted" data-pt="Cada projeto tem a sua própria página, âmbito e estado de desenvolvimento." data-en="Each project has its own page, scope and development status.">Each project has its own page, scope and development status.</p></div><div class="cv-project-list"><a href="/produtos/diskguardian/"><span>DiskGuardian</span><span>↗</span></a><a href="/produtos/windows-technical-toolkit/"><span>Windows Technical Toolkit</span><span>↗</span></a><a href="/produtos/domain-admin-toolkit/"><span>Domain Admin Toolkit</span><span>↗</span></a></div></div></section>
 <section class="cv-closing"><div class="wrap"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="04 / PRÓXIMOS PASSOS" data-en="04 / NEXT STEPS">04 / NEXT STEPS</span></div><h2 data-pt="Um currículo em construção." data-en="A profile taking shape.">A profile taking shape.</h2><p class="lead" data-pt="O histórico profissional, a formação e os contactos diretos serão publicados depois de revistos e autorizados." data-en="Career history, education and direct contact details will be published once reviewed and approved.">Career history, education and direct contact details will be published once reviewed and approved.</p><a class="btn secondary" href="/" data-pt="Voltar ao portfólio" data-en="Back to portfolio">Back to portfolio</a></div></section>
-</main><footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span>TECHNOLOGY SOLUTIONS</span><a href="/" data-pt="Página inicial ↑" data-en="Back to home ↑">Back to home ↑</a></div></footer>
+</main><SiteFooter />
 <script src="/js/preferences.js" defer></script></body></html>
