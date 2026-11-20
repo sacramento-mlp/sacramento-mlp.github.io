@@ -1,0 +1,55 @@
+---
+import '../../styles/global.css';
+const catalog = [
+  { slug:'diskguardian', name:'DiskGuardian', tech:'Python · Windows', pt:'Gestão e análise de armazenamento', en:'Storage management and analysis', descriptionPt:'Projeto de software para analisar, organizar e gerir armazenamento em Windows, com foco na segurança dos dados e em operações controladas.', descriptionEn:'Software project for analyzing, organizing and managing storage on Windows, focused on data safety and controlled operations.' },
+  { slug:'windows-technical-toolkit', name:'Windows Technical Toolkit', tech:'PowerShell · Windows', pt:'Diagnóstico, manutenção e automação', en:'Diagnostics, maintenance and automation', descriptionPt:'Conjunto independente de ferramentas PowerShell para apoiar tarefas técnicas e rotinas de manutenção de computadores Windows.', descriptionEn:'An independent collection of PowerShell tools supporting technical tasks and maintenance routines on Windows computers.' },
+  { slug:'domain-admin-toolkit', name:'Domain Admin Toolkit', tech:'PowerShell · Active Directory', pt:'Administração de ambientes empresariais', en:'Enterprise environment administration', descriptionPt:'Ferramentas técnicas para apoiar a administração e o diagnóstico de ambientes Windows com domínio e Active Directory.', descriptionEn:'Technical tools to support administration and diagnostics in domain-based Windows and Active Directory environments.' }
+];
+export function getStaticPaths() { return catalog.map(product=>({params:{slug:product.slug},props:{product}})); }
+const {product}=Astro.props;
+---
+<!doctype html>
+<html lang="pt" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content={product.descriptionPt}/>
+<title>{product.name} | Mário Sacramento</title>
+<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';if(localStorage.getItem('lang')==='en')document.documentElement.lang='en'}catch{}</script>
+</head>
+<body>
+<header class="top"><nav class="wrap nav" aria-label="Main navigation">
+<a class="brand" href="/">Mário Sacramento<span style="color:var(--accent)">.</span></a>
+<div class="navlinks">
+<a href="/" data-pt="Início" data-en="Home">Início</a>
+<a href="/#produtos" data-pt="Produtos" data-en="Products">Produtos</a>
+<a href="/#contacto" data-pt="Contacto" data-en="Contact">Contacto</a>
+<button class="switch" id="lang" type="button" aria-label="Change language">EN</button>
+<button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button>
+</div></nav></header>
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">{product.tech}</div>
+<h1>{product.name}</h1>
+<p class="lead" data-pt={product.pt} data-en={product.en}>{product.pt}</p>
+<div class="actions"><a class="btn secondary" href="/#produtos" data-pt="← Todos os produtos" data-en="← All products">← Todos os produtos</a></div>
+</section>
+<section>
+<div class="grid" style="grid-template-columns:minmax(0,1fr)">
+<article class="card">
+<span class="tag" data-pt="Em desenvolvimento" data-en="In development">Em desenvolvimento</span>
+<h2 data-pt="Sobre o projeto" data-en="About the project">Sobre o projeto</h2>
+<p class="lead" data-pt={product.descriptionPt} data-en={product.descriptionEn}>{product.descriptionPt}</p>
+<p class="muted" data-pt="Este produto ainda não está disponível para compra. As funcionalidades, os preços e a documentação serão divulgados após validação." data-en="This product is not available for purchase yet. Features, pricing and documentation will be published after validation.">Este produto ainda não está disponível para compra. As funcionalidades, os preços e a documentação serão divulgados após validação.</p>
+</article></div>
+</section>
+<section><h2 data-pt="Acompanha o desenvolvimento" data-en="Follow development">Acompanha o desenvolvimento</h2><p class="lead" data-pt="Consulta o perfil GitHub para conhecer os projetos e futuras atualizações públicas." data-en="Visit the GitHub profile for projects and future public updates.">Consulta o perfil GitHub para conhecer os projetos e futuras atualizações públicas.</p><a class="btn" href="https://github.com/sacramento-mlp" rel="noopener noreferrer">GitHub ↗</a></section>
+</main>
+<footer><div class="wrap">© {new Date().getFullYear()} Mário Sacramento</div></footer>
+<script>
+function applyLang(lang:'pt'|'en'){document.documentElement.lang=lang;document.querySelectorAll<HTMLElement>('[data-pt][data-en]').forEach(el=>{el.textContent=el.dataset[lang]||''});const b=document.querySelector<HTMLButtonElement>('#lang');if(b)b.textContent=lang==='pt'?'EN':'PT';try{localStorage.setItem('lang',lang)}catch{}}
+applyLang(document.documentElement.lang==='en'?'en':'pt');
+document.querySelector('#lang')?.addEventListener('click',()=>applyLang(document.documentElement.lang==='pt'?'en':'pt'));
+document.querySelector('#theme')?.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('theme',next)}catch{}});
+</script>
+</body></html>
