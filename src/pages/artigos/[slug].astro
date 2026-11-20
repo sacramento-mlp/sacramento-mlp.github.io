@@ -21,7 +21,7 @@ const { article } = Astro.props;
 <title>{article.title.en} | Mário Sacramento</title>
 <script is:inline src="/js/preferences-init.js"></script>
 </head><body class="articles-page">
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a class="skip-link" href="#main-content" data-pt="Saltar para o conteúdo principal" data-en="Skip to main content">Skip to main content</a>
 <SiteHeader current="articles" />
 <main id="main-content"><article>
 <header class="article-detail-hero"><div class="wrap article-reading"><a class="back-link" href="/artigos/" data-pt="← Todos os artigos" data-en="← All articles">← All articles</a><div class="section-kicker"><span class="kicker-line"></span><span>{article.category.toUpperCase()} · <time datetime={article.date}>{article.date}</time> · {article.readMinutes} MIN</span></div><h1 data-pt={article.title.pt} data-en={article.title.en}>{article.title.en}</h1><p class="lead" data-pt={article.summary.pt} data-en={article.summary.en}>{article.summary.en}</p></div></header>
