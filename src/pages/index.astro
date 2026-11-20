@@ -62,10 +62,5 @@ try {document.documentElement.dataset.theme=localStorage.getItem('theme')==='lig
 <section id="contacto" class="contact-section"><div class="wrap contact-inner"><div><div class="section-kicker"><span class="kicker-line"></span><span data-pt="04 / CONTACTO" data-en="04 / CONTACT">04 / CONTACT</span></div><h2 data-pt="Vamos criar algo útil." data-en="Let's build something useful.">Let's build something useful.</h2><p class="lead" data-pt="Explora os meus projetos e acompanha as próximas novidades através do GitHub." data-en="Explore my projects and follow future updates on GitHub.">Explore my projects and follow future updates on GitHub.</p></div><a class="btn" href="https://github.com/sacramento-mlp" rel="noopener noreferrer"><span data-pt="Ver perfil GitHub" data-en="Visit GitHub profile">Visit GitHub profile</span> ↗</a></div></section>
 </main>
 <footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span data-pt="Desenvolvido com Astro · Alojado no GitHub Pages" data-en="Built with Astro · Hosted on GitHub Pages">Built with Astro · Hosted on GitHub Pages</span><a href="#inicio" data-pt="Voltar ao topo ↑" data-en="Back to top ↑">Back to top ↑</a></div></footer>
-<script>
-function applyLang(lang:'pt'|'en'){document.documentElement.lang=lang;document.querySelectorAll<HTMLElement>('[data-pt][data-en]').forEach(el=>{el.textContent=el.dataset[lang]||''});const b=document.querySelector<HTMLButtonElement>('#lang');if(b)b.textContent=lang==='pt'?'EN':'PT';try{localStorage.setItem('lang',lang)}catch{}}
-applyLang(document.documentElement.lang==='pt'?'pt':'en');
-document.querySelector('#lang')?.addEventListener('click',()=>applyLang(document.documentElement.lang==='pt'?'en':'pt'));
-document.querySelector('#theme')?.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('theme',next)}catch{}});
-</script>
+<script src="/js/preferences.js" defer></script>
 </body></html>
