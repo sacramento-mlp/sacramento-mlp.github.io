@@ -85,3 +85,10 @@ body{overflow-x:hidden}
 .top .brand-logo{width:49px;height:38px}
 .top .brand{margin-bottom:12px}
 }
+
+/* All five destinations remain visible on narrow screens. */
+@media(max-width:760px){
+  .top .navlinks{overflow:visible;display:flex;flex-wrap:wrap;justify-content:flex-start;column-gap:clamp(14px,4vw,26px);row-gap:3px}
+  .top .navlinks>a{display:inline-flex;flex-shrink:0;white-space:nowrap;font-size:clamp(.72rem,2.8vw,.84rem);min-height:40px;align-items:center}
+  .top .switch{min-width:40px;min-height:40px}
+}
