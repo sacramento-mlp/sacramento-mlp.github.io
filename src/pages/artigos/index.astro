@@ -1,4 +1,5 @@
 ---
+import SiteHeader from '../../components/SiteHeader.astro';
 import '../../styles/global.css';
 import { publishedArticles } from '../../data/articles';
 const categoryLabels: Record<string,{en:string;pt:string}> = {
@@ -18,13 +19,7 @@ const categoryLabels: Record<string,{en:string;pt:string}> = {
 <script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
 </head><body class="articles-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="top"><nav class="wrap nav" aria-label="Main navigation"><a class="brand" href="/"><img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt=""/><span class="brand-name">Mário Sacramento</span></a><div class="navlinks">
-<a href="/" data-pt="Início" data-en="Home">Home</a>
-<a href="/cv/" data-pt="Currículo" data-en="Résumé">Résumé</a>
-<a href="/#produtos" data-pt="Produtos" data-en="Products">Products</a>
-<a href="/artigos/" aria-current="page" data-pt="Artigos" data-en="Articles">Articles</a>
-<div class="nav-controls"><button class="switch" id="lang" type="button" aria-label="Change language">PT</button><button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button></div>
-</div></nav></header>
+<SiteHeader current="articles" />
 <main id="main-content">
 <section class="articles-hero"><div class="wrap"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="CONHECIMENTO / RECURSOS" data-en="KNOWLEDGE / RESOURCES">KNOWLEDGE / RESOURCES</span></div><h1 data-pt="Artigos & Guias" data-en="Articles & Guides">Articles & Guides</h1><p class="lead" data-pt="Guias práticos, explicações técnicas e recursos para trabalhar melhor com tecnologia." data-en="Practical guides, technical explanations and resources to help you work better with technology.">Practical guides, technical explanations and resources to help you work better with technology.</p></div></section>
 <section class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="BIBLIOTECA" data-en="LIBRARY">LIBRARY</span></div>
