@@ -29,6 +29,10 @@ for (const route of requiredRoutes) {
   if (!html.includes('href="/artigos/"')) failures.push(`Missing Articles navigation: ${route}`);
   if (!html.includes('/js/preferences.js')) failures.push(`Missing preferences script: ${route}`);
   if (!html.includes('ms-logo.png')) failures.push(`Missing brand reference: ${route}`);
+  if (!html.includes('href="#main-content"')) failures.push(`Missing keyboard skip link: ${route}`);
+  if (!html.includes('id="main-content"')) failures.push(`Missing main content landmark: ${route}`);
+  if (!html.includes('data-aria-pt="Navegação principal"')) failures.push(`Missing bilingual main navigation: ${route}`);
+
 }
 for (const asset of requiredAssets) {
   if (!existsSync(join(outDir, asset.slice(1)))) failures.push(`Missing public asset ${asset}`);
