@@ -1,0 +1,29 @@
+---
+import '../../styles/global.css';
+import { publishedArticles } from '../../data/articles';
+export function getStaticPaths(){
+  return publishedArticles.map(article=>({params:{slug:article.slug},props:{article}}));
+}
+const { article } = Astro.props;
+---
+<!doctype html><html lang="en" data-theme="dark"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={article.summary.en}/>
+<link rel="canonical" href={`https://sacramento-mlp.github.io/artigos/${article.slug}/`}/>
+<link rel="icon" type="image/png" href="/brand/ms-logo.png"/>
+<meta name="theme-color" content="#080f1d"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content={article.title.en}/>
+<meta property="og:description" content={article.summary.en}/>
+<meta property="article:published_time" content={article.date}/>
+<title>{article.title.en} | Mário Sacramento</title>
+<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
+</head><body class="articles-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="top"><nav class="wrap nav" aria-label="Main navigation"><a class="brand" href="/"><img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt=""/><span class="brand-name">Mário Sacramento</span></a><div class="navlinks"><a href="/" data-pt="Início" data-en="Home">Home</a><a href="/cv/" data-pt="Currículo" data-en="Résumé">Résumé</a><a href="/#produtos" data-pt="Produtos" data-en="Products">Products</a><a href="/artigos/" data-pt="Artigos" data-en="Articles">Articles</a><div class="nav-controls"><button class="switch" id="lang" type="button" aria-label="Change language">PT</button><button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button></div></div></nav></header>
+<main id="main-content"><article>
+<header class="article-detail-hero"><div class="wrap article-reading"><a class="back-link" href="/artigos/" data-pt="← Todos os artigos" data-en="← All articles">← All articles</a><div class="section-kicker"><span class="kicker-line"></span><span>{article.category.toUpperCase()} · <time datetime={article.date}>{article.date}</time> · {article.readMinutes} MIN</span></div><h1 data-pt={article.title.pt} data-en={article.title.en}>{article.title.en}</h1><p class="lead" data-pt={article.summary.pt} data-en={article.summary.en}>{article.summary.en}</p></div></header>
+<div class="wrap article-reading article-body">{article.sections.map(section=><section><h2 data-pt={section.heading.pt} data-en={section.heading.en}>{section.heading.en}</h2>{section.paragraphs.map(p=><p data-pt={p.pt} data-en={p.en}>{p.en}</p>)}</section>)}
+<div class="article-end"><p data-pt="Este conteúdo é informativo. Antes de alterar um sistema, confirma as opções disponíveis e mantém cópias de segurança adequadas." data-en="This content is informational. Before changing a system, verify the available options and keep appropriate backups.">This content is informational. Before changing a system, verify the available options and keep appropriate backups.</p><a class="btn secondary" href="/artigos/" data-pt="Voltar aos artigos" data-en="Back to articles">Back to articles</a></div></div>
+</article></main><footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span>TECHNOLOGY SOLUTIONS</span><a href="/" data-pt="Página inicial ↑" data-en="Back to home ↑">Back to home ↑</a></div></footer>
+<script src="/js/preferences.js" defer></script></body></html>
