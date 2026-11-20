@@ -26,6 +26,7 @@ const {product}=Astro.props;
 <script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
 </head>
 <body class="product-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="top"><nav class="wrap nav" aria-label="Main navigation">
 <a class="brand" href="/" aria-label="Mário Sacramento home"><img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt=""/><span class="brand-name">Mário Sacramento</span></a>
 <div class="navlinks">
@@ -35,7 +36,7 @@ const {product}=Astro.props;
 <a href="/#contacto" data-pt="Contacto" data-en="Contact">Contact</a>
 <div class="nav-controls"><button class="switch" id="lang" type="button" aria-label="Change language">PT</button><button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button></div>
 </div></nav></header>
-<main>
+<main id="main-content">
 <section class="product-hero"><div class="wrap">
 <a class="back-link" href="/#produtos"><span aria-hidden="true">←</span> <span data-pt="Voltar aos produtos" data-en="Back to products">Back to products</span></a>
 <div class="product-hero-grid"><div class="product-hero-copy">
