@@ -7,7 +7,7 @@ const products = [
 ];
 ---
 <!doctype html>
-<html lang="pt" data-theme="light">
+<html lang="pt" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,7 +15,7 @@ const products = [
 <meta name="theme-color" content="#14213b" />
 <title>Mário Sacramento | Software & IT</title>
 <script is:inline>
-try { const t=localStorage.getItem('theme');document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');const l=localStorage.getItem('lang');if(l==='en'){document.documentElement.lang='en'} } catch {}
+try { const t=localStorage.getItem('theme');document.documentElement.dataset.theme=t==='light'?'light':'dark';const l=localStorage.getItem('lang');if(l==='en'){document.documentElement.lang='en'} } catch {}
 </script>
 </head>
 <body>
