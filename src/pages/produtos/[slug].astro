@@ -9,13 +9,13 @@ export function getStaticPaths() { return catalog.map(product=>({params:{slug:pr
 const {product}=Astro.props;
 ---
 <!doctype html>
-<html lang="pt" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content={product.descriptionPt}/>
 <title>{product.name} | Mário Sacramento</title>
-<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';if(localStorage.getItem('lang')==='en')document.documentElement.lang='en'}catch{}</script>
+<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
 </head>
 <body>
 <header class="top"><nav class="wrap nav" aria-label="Main navigation">
