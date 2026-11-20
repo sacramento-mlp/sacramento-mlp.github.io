@@ -174,3 +174,35 @@ body{overflow-x:hidden}
 .product-page .next-arrow{position:absolute;right:24px;bottom:24px;color:var(--accent);font-size:1.5rem}
 @media(max-width:900px){.product-page .product-hero-grid{grid-template-columns:1fr;gap:35px}.product-page .product-showcase{min-height:330px}.product-page .product-about-grid{gap:30px}}
 @media(max-width:760px){.product-page .top .nav{min-height:0}.product-page .product-hero{padding:30px 0 58px}.product-page .back-link{margin-bottom:35px}.product-page .product-hero h1{font-size:clamp(2.4rem,9vw,3.4rem)}.product-page .product-hero .lead{font-size:.98rem;line-height:1.75}.product-page .product-showcase{min-height:285px;padding:19px;border-radius:16px}.product-page .showcase-symbol{width:85px;height:85px;font-size:2.7rem;border-radius:20px}.product-page .showcase-name{font-size:1.12rem}.product-page .showcase-top,.product-page .showcase-bottom{font-size:.58rem}.product-page .product-about-grid{grid-template-columns:1fr;gap:15px}.product-page .product-notice-inner{flex-direction:column;align-items:start;padding-top:58px;padding-bottom:58px}.product-page .product-next-grid{grid-template-columns:1fr}.product-page .next-product-card{min-height:135px}.product-page .actions .btn{font-size:.86rem;padding:12px 15px}}
+
+
+/* v0.5 — professional profile / résumé */
+.profile-link{display:inline-flex;gap:9px;align-items:center;margin-top:12px;color:var(--accent);font-weight:800;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
+.profile-link:hover{color:var(--text)}
+.cv-page .cv-hero{padding:85px 0 95px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse 65% 70% at 83% 50%,rgba(46,137,228,.13),transparent 80%)}
+.cv-page .cv-hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:65px;align-items:center}
+.cv-page .cv-hero h1{font-size:clamp(3.3rem,7vw,6.4rem);letter-spacing:-.065em;line-height:1.06;margin:20px 0 14px}
+.cv-page .cv-role{font-size:1.2rem;font-weight:750;color:var(--accent);margin:0 0 25px}
+.cv-page .cv-hero .lead{font-size:1.08rem;line-height:1.85}
+.cv-page .cv-identity{min-height:380px;border:1px solid #315170;border-radius:22px;background:radial-gradient(circle at center,#1c3b60,#0b1729 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;gap:10px;color:#eef5ff}
+.cv-page .cv-identity img{width:min(180px,75%);height:auto;object-fit:contain}
+.cv-page .cv-identity-name{font-size:1.25rem;font-weight:850;letter-spacing:.09em;text-align:center}
+.cv-page .cv-identity-tag{font-size:.7rem;letter-spacing:.24em;color:#79cbff;text-align:center}
+.cv-page .cv-two-col{display:grid;grid-template-columns:1fr 1fr;gap:75px}
+.cv-page .cv-two-col h2{font-size:clamp(2rem,3.7vw,3rem);line-height:1.2}
+.cv-page .cv-two-col .lead{font-size:1.05rem;line-height:1.85}
+.cv-page .cv-skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+.cv-page .cv-skill{display:flex;align-items:flex-start;gap:15px;min-height:195px;padding:27px;border:1px solid var(--line);border-radius:17px;background:var(--panel)}
+.cv-page .cv-skill-number{color:var(--accent);font-size:.75rem;font-weight:800}
+.cv-page .cv-skill h3{margin:0 0 12px;font-size:1.1rem}
+.cv-page .cv-skill p{margin:0;color:var(--muted);font-size:.85rem}
+.cv-page .cv-skill-arrow{margin-left:auto;color:var(--accent)}
+.cv-page .cv-project-list{border-top:1px solid var(--line)}
+.cv-page .cv-project-list a{display:flex;justify-content:space-between;gap:15px;padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--text);font-weight:750}
+.cv-page .cv-project-list a span:last-child{color:var(--accent)}
+.cv-page .cv-project-list a:hover{color:var(--accent)}
+.cv-page .cv-closing{background:var(--panel);border-top:1px solid var(--line);padding:75px 0}
+.cv-page .cv-closing h2{font-size:clamp(2rem,4vw,3rem)}
+.cv-page .cv-closing .lead{max-width:720px;margin-bottom:28px}
+@media(max-width:900px){.cv-page .cv-hero-grid{gap:28px}.cv-page .cv-skills{grid-template-columns:1fr}.cv-page .cv-skill{min-height:0}.cv-page .cv-two-col{gap:30px}}
+@media(max-width:760px){.cv-page .cv-hero{padding:55px 0 65px}.cv-page .cv-hero-grid{grid-template-columns:1fr}.cv-page .cv-hero h1{font-size:clamp(3rem,12vw,4.3rem)}.cv-page .cv-hero .lead{font-size:1rem}.cv-page .cv-identity{min-height:240px;padding:25px}.cv-page .cv-identity img{width:130px}.cv-page .cv-identity-name{font-size:1rem}.cv-page .cv-two-col{grid-template-columns:1fr;gap:16px}.cv-page .cv-closing{padding:55px 0}.cv-page .cv-skill{padding:22px}}
