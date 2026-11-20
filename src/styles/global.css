@@ -79,3 +79,13 @@ body{overflow-x:hidden}
   .top .navlinks>a:nth-child(3){transform:translateX(-6%)}
   .hero-shell .hero h1{font-size:2.55rem}
 }
+
+
+/* Keep all four mobile navigation links in a single, non-overlapping row. */
+@media(max-width:760px){
+.top .nav{display:flex;flex-direction:column;align-items:stretch;gap:10px;position:relative;padding:15px 0 13px}
+.top .brand{align-self:flex-start;max-width:calc(100% - 104px);min-height:38px}
+.top .navlinks{display:flex;align-items:center;justify-content:space-between;gap:6px;width:100%;flex-wrap:nowrap}
+.top .navlinks>a,.top .navlinks>a:nth-child(1),.top .navlinks>a:nth-child(2),.top .navlinks>a:nth-child(3),.top .navlinks>a:nth-child(4){display:inline-block;grid-area:auto;grid-row:auto;grid-column:auto;transform:none;justify-self:auto;align-self:auto;padding:5px 0;font-size:clamp(.68rem,2.7vw,.85rem);white-space:nowrap}
+.top .nav-controls{position:absolute;right:0;top:14px;display:flex;gap:5px;width:auto}
+}
