@@ -11,25 +11,6 @@ body{overflow-x:hidden}
 .terminal-window{isolation:isolate}
 .hero-meta{line-height:1.4}
 @media(max-width:760px){
-  .top{position:relative}
-  .top .nav{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand controls" "links links";column-gap:12px;row-gap:14px;min-height:0;padding:16px 0 12px}
-  .top .brand{grid-area:brand;gap:9px;min-width:0}
-  .top .brand-name{font-size:.94rem;overflow:hidden;text-overflow:ellipsis}
-  .top .brand-mark{flex-shrink:0;width:38px;height:38px;font-size:.91rem}
-  .top .navlinks{display:contents}
-  .top .nav-controls{grid-area:controls;display:flex;justify-content:flex-end;gap:6px}
-  .top .navlinks>a{grid-area:links;display:none}
-  .top .navlinks>a:nth-child(1),.top .navlinks>a:nth-child(2),.top .navlinks>a:nth-child(3),.top .navlinks>a:nth-child(4){display:inline-flex}
-  .top .nav{grid-template-rows:auto auto}
-  .top .navlinks>a{grid-row:2;align-self:center;font-size:.8rem;white-space:nowrap;padding:4px 0}
-  .top .navlinks>a:nth-child(1){grid-column:1;justify-self:start}
-  .top .navlinks>a:nth-child(2){grid-column:1;justify-self:center}
-  .top .navlinks>a:nth-child(3){grid-column:2;justify-self:start}
-  .top .navlinks>a:nth-child(4){grid-column:2;justify-self:end}
-  .top .nav{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-  .top .nav-controls{grid-column:2}
-  .top .navlinks>a:nth-child(2){transform:translateX(18%)}
-  .top .navlinks>a:nth-child(3){transform:translateX(-12%)}
   .hero-shell .hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:22px;min-height:0;padding-top:52px;padding-bottom:50px}
   .hero-shell .hero h1{font-size:clamp(2.65rem,10vw,4.2rem);line-height:1.09;letter-spacing:-.06em;margin:20px 0 15px}
   .hero-shell .hero .lead{font-size:1rem;line-height:1.75;margin:16px 0}
@@ -56,25 +37,11 @@ body{overflow-x:hidden}
   .contact-inner{padding-top:60px;padding-bottom:60px}
 }
 @media(max-width:390px){
-  .top .brand-name{font-size:.83rem}
-  .top .navlinks>a{font-size:.72rem}
-  .top .navlinks>a:nth-child(2){transform:translateX(8%)}
-  .top .navlinks>a:nth-child(3){transform:translateX(-6%)}
   .hero-shell .hero h1{font-size:2.55rem}
 }
 
 
-/* Keep all four mobile navigation links in a single, non-overlapping row. */
-@media(max-width:760px){
-.top .nav{display:flex;flex-direction:column;align-items:stretch;gap:10px;position:relative;padding:15px 0 13px}
-.top .brand{align-self:flex-start;max-width:calc(100% - 104px);min-height:38px}
-.top .navlinks{display:flex;align-items:center;justify-content:space-between;gap:6px;width:100%;flex-wrap:nowrap}
-.top .navlinks>a,.top .navlinks>a:nth-child(1),.top .navlinks>a:nth-child(2),.top .navlinks>a:nth-child(3),.top .navlinks>a:nth-child(4){display:inline-block;grid-area:auto;grid-row:auto;grid-column:auto;transform:none;justify-self:auto;align-self:auto;padding:5px 0;font-size:clamp(.68rem,2.7vw,.85rem);white-space:nowrap}
-.top .nav-controls{position:absolute;right:0;top:14px;display:flex;gap:5px;width:auto}
-}
-
-
-/* v0.3.2 — intentional mobile composition, not a shrunken desktop */
+/* Mobile navigation and intentional compact composition */
 @media(max-width:760px){
   .top .nav{gap:0;padding:13px 0 0}
   .top .brand{margin-bottom:12px}
