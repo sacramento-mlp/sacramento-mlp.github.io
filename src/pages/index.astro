@@ -1,54 +1,69 @@
 ---
 import '../styles/global.css';
 const products = [
- {slug:'diskguardian',name:'DiskGuardian',type:'Windows · Python',pt:'Análise e gestão de armazenamento, com foco em segurança e controlo.',en:'Storage analysis and management focused on safety and control.'},
- {slug:'windows-technical-toolkit',name:'Windows Technical Toolkit',type:'PowerShell · Windows',pt:'Ferramentas técnicas de diagnóstico, manutenção e automação.',en:'Technical tools for diagnostics, maintenance and automation.'},
- {slug:'domain-admin-toolkit',name:'Domain Admin Toolkit',type:'PowerShell · Active Directory',pt:'Ferramentas de administração para ambientes Windows e domínios.',en:'Administration tools for Windows and domain environments.'}
+ {slug:'diskguardian',name:'DiskGuardian',number:'01',icon:'◈',type:'PYTHON / WINDOWS',pt:'Análise e gestão de armazenamento com operações controladas e foco na segurança dos dados.',en:'Storage analysis and management with controlled operations and a focus on data safety.'},
+ {slug:'windows-technical-toolkit',name:'Windows Technical Toolkit',number:'02',icon:'>_',type:'POWERSHELL / WINDOWS',pt:'Ferramentas para diagnóstico, manutenção e automação de tarefas em Windows.',en:'Tools for Windows diagnostics, maintenance and task automation.'},
+ {slug:'domain-admin-toolkit',name:'Domain Admin Toolkit',number:'03',icon:'⌘',type:'POWERSHELL / ACTIVE DIRECTORY',pt:'Utilitários técnicos para apoiar a administração de ambientes Windows com domínio.',en:'Technical utilities supporting the administration of domain-based Windows environments.'}
 ];
 ---
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Mário Sacramento — portfólio profissional, desenvolvimento de software e automação Windows." />
-<meta name="theme-color" content="#14213b" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Mário Sacramento — software development, Windows automation and technical tools."/>
+<meta name="theme-color" content="#080f1d"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Mário Sacramento | Software & IT"/>
+<meta property="og:description" content="Software development, Windows automation and technical tools."/>
+<meta property="og:url" content="https://sacramento-mlp.github.io/"/>
 <title>Mário Sacramento | Software & IT</title>
 <script is:inline>
-try { const t=localStorage.getItem('theme');document.documentElement.dataset.theme=t==='light'?'light':'dark';const l=localStorage.getItem('lang');document.documentElement.lang=l==='pt'?'pt':'en' } catch {}
+try {document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}
 </script>
 </head>
 <body>
 <header class="top"><nav class="wrap nav" aria-label="Main navigation">
-<a class="brand" href="#inicio">Mário Sacramento<span style="color:var(--accent)">.</span></a>
+<a class="brand" href="#inicio" aria-label="Mário Sacramento home"><span class="brand-mark">MS<span>.</span></span><span class="brand-name">Mário Sacramento</span></a>
 <div class="navlinks">
-<a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a>
-<a href="#projetos" data-pt="Projetos" data-en="Projects">Projetos</a>
-<a href="#produtos" data-pt="Software" data-en="Software">Software</a>
-<a href="#contacto" data-pt="Contacto" data-en="Contact">Contacto</a>
-<button class="switch" id="lang" type="button" aria-label="Change language">EN</button>
-<button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button>
+<a href="#sobre" data-pt="Sobre" data-en="About">About</a>
+<a href="#projetos" data-pt="Especialidades" data-en="Expertise">Expertise</a>
+<a href="#produtos" data-pt="Produtos" data-en="Products">Products</a>
+<a href="#contacto" data-pt="Contacto" data-en="Contact">Contact</a>
+<div class="nav-controls"><button class="switch" id="lang" type="button" aria-label="Change language">PT</button><button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button></div>
 </div></nav></header>
 <main id="inicio">
-<div class="wrap hero">
-<div class="eyebrow" data-pt="Portfólio profissional · Tecnologia" data-en="Professional portfolio · Technology">Portfólio profissional · Tecnologia</div>
-<h1>Mário Sacramento</h1>
-<p class="lead" data-pt="Desenvolvimento de software, automação Windows e ferramentas técnicas para resolver problemas reais." data-en="Software development, Windows automation and technical tools built to solve real problems.">Desenvolvimento de software, automação Windows e ferramentas técnicas para resolver problemas reais.</p>
-<div class="actions"><a class="btn" href="#projetos" data-pt="Explorar projetos" data-en="Explore projects">Explorar projetos</a><a class="btn secondary" href="#contacto" data-pt="Entrar em contacto" data-en="Get in touch">Entrar em contacto</a></div>
+<div class="hero-shell"><div class="wrap hero hero-grid">
+<div class="hero-copy">
+<div class="availability"><span class="status-dot"></span><span data-pt="PORTFÓLIO & DESENVOLVIMENTO DE SOFTWARE" data-en="PORTFOLIO & SOFTWARE DEVELOPMENT">PORTFOLIO & SOFTWARE DEVELOPMENT</span></div>
+<h1><span data-pt="Tecnologia com" data-en="Technology with">Technology with</span><br/><span class="gradient-text" data-pt="propósito." data-en="purpose.">purpose.</span></h1>
+<p class="hero-name">Mário Sacramento <span class="hero-name-line"></span> <span data-pt="Software & IT" data-en="Software & IT">Software & IT</span></p>
+<p class="lead" data-pt="Desenvolvo software e ferramentas de automação para transformar desafios técnicos em soluções práticas, seguras e eficientes." data-en="I build software and automation tools that turn technical challenges into practical, secure and efficient solutions.">I build software and automation tools that turn technical challenges into practical, secure and efficient solutions.</p>
+<div class="actions"><a class="btn" href="#produtos"><span data-pt="Explorar produtos" data-en="Explore products">Explore products</span> <span aria-hidden="true">↗</span></a><a class="btn secondary" href="#contacto" data-pt="Entrar em contacto" data-en="Get in touch">Get in touch</a></div>
+<div class="hero-meta"><span><span class="mini-dot"></span> PYTHON</span><span><span class="mini-dot"></span> POWERSHELL</span><span><span class="mini-dot"></span> WINDOWS</span></div>
 </div>
-<section id="sobre" class="wrap"><div class="eyebrow" data-pt="Perfil" data-en="Profile">Perfil</div><h2 data-pt="Sobre mim" data-en="About me">Sobre mim</h2><p class="lead" data-pt="Sou Mário Sacramento. Este espaço reúne projetos, ferramentas e soluções de software que desenvolvo. O currículo detalhado e a experiência profissional serão adicionados após validação." data-en="I'm Mário Sacramento. This site brings together projects, tools and software solutions I develop. My detailed résumé and work experience will be added after review.">Sou Mário Sacramento. Este espaço reúne projetos, ferramentas e soluções de software que desenvolvo. O currículo detalhado e a experiência profissional serão adicionados após validação.</p></section>
-<section id="projetos" class="wrap"><div class="eyebrow" data-pt="Trabalho" data-en="Work">Trabalho</div><h2 data-pt="Áreas de atuação" data-en="Areas of focus">Áreas de atuação</h2><div class="grid">
-<div class="card"><span class="tag">Python</span><h3 data-pt="Desenvolvimento" data-en="Development">Desenvolvimento</h3><p data-pt="Aplicações, utilitários e sistemas orientados a necessidades práticas." data-en="Applications, utilities and systems focused on practical needs.">Aplicações, utilitários e sistemas orientados a necessidades práticas.</p></div>
-<div class="card"><span class="tag">PowerShell</span><h3 data-pt="Automação" data-en="Automation">Automação</h3><p data-pt="Simplificação de tarefas de manutenção e administração Windows." data-en="Simplifying Windows maintenance and administration tasks.">Simplificação de tarefas de manutenção e administração Windows.</p></div>
-<div class="card"><span class="tag">IT</span><h3 data-pt="Ferramentas técnicas" data-en="Technical tools">Ferramentas técnicas</h3><p data-pt="Diagnóstico, organização e gestão de ambientes informáticos." data-en="Diagnostics, organization and management of IT environments.">Diagnóstico, organização e gestão de ambientes informáticos.</p></div>
-</div></section>
-<section id="produtos" class="wrap"><div class="eyebrow">Software</div><h2 data-pt="Produtos em desenvolvimento" data-en="Products in development">Produtos em desenvolvimento</h2><div class="grid">{products.map(p=><article class="card"><span class="tag">{p.type}</span><h3>{p.name}</h3><p data-pt={p.pt} data-en={p.en}>{p.pt}</p><span class="muted" data-pt="Em desenvolvimento · Sem vendas ativas" data-en="In development · Not currently for sale">Em desenvolvimento · Sem vendas ativas</span><div style="margin-top:16px"><a class="btn secondary" href={`/produtos/${p.slug}/`} data-pt="Ver detalhes →" data-en="View details →">Ver detalhes →</a></div></article>)}</div></section>
-<section id="contacto" class="wrap"><div class="eyebrow" data-pt="Contacto" data-en="Contact">Contacto</div><h2 data-pt="Vamos conversar" data-en="Let's connect">Vamos conversar</h2><p class="lead" data-pt="Conhece o meu trabalho e acompanha as atualizações através do GitHub." data-en="Explore my work and follow updates on GitHub.">Conhece o meu trabalho e acompanha as atualizações através do GitHub.</p><a class="btn" href="https://github.com/sacramento-mlp" rel="noopener noreferrer">GitHub ↗</a></section>
+<div class="hero-visual" aria-hidden="true">
+<div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+<div class="visual-glow"></div>
+<div class="terminal-window">
+<div class="terminal-head"><div class="terminal-dots"><i></i><i></i><i></i></div><span>mario@portfolio ~</span><span class="terminal-symbol">⌘</span></div>
+<div class="terminal-body"><p><span class="term-prompt">❯</span> <span class="term-command">whoami</span></p><p class="term-response">Mário Sacramento</p><p><span class="term-prompt">❯</span> <span class="term-command">cat focus.txt</span></p><p class="term-response">Software Development</p><p class="term-response">Windows Automation</p><p class="term-response">Technical Solutions</p><p><span class="term-prompt">❯</span> <span class="cursor">▋</span></p></div>
+</div><div class="float-label">BUILD <span>●</span> IMPROVE <span>●</span> AUTOMATE</div>
+</div>
+</div></div>
+<section id="sobre" class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="01 / PERFIL" data-en="01 / PROFILE">01 / PROFILE</span></div><div class="about-grid"><div><h2 data-pt="Construir ferramentas que fazem a diferença." data-en="Building tools that make a difference.">Building tools that make a difference.</h2></div><div><p class="lead" data-pt="Sou Mário Sacramento. Este portfólio reúne projetos de desenvolvimento de software, automação e administração de sistemas, com especial atenção a soluções para Windows." data-en="I'm Mário Sacramento. This portfolio brings together software development, automation and systems administration projects, with a particular focus on Windows solutions.">I'm Mário Sacramento. This portfolio brings together software development, automation and systems administration projects, with a particular focus on Windows solutions.</p><p class="muted" data-pt="A experiência profissional e o currículo detalhado serão publicados após validação." data-en="Professional experience and a detailed résumé will be published after review.">Professional experience and a detailed résumé will be published after review.</p></div></div></section>
+<section id="projetos" class="section-alt"><div class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="02 / COMPETÊNCIAS" data-en="02 / EXPERTISE">02 / EXPERTISE</span></div><div class="section-heading"><h2 data-pt="Áreas de especialização" data-en="Areas of focus">Areas of focus</h2><p class="muted" data-pt="Três áreas que orientam os projetos apresentados." data-en="Three areas shaping the projects featured here.">Three areas shaping the projects featured here.</p></div><div class="grid expertise-grid">
+<article class="card expertise-card"><div class="expertise-icon">⌘</div><span class="tag">01 / DEVELOPMENT</span><h3 data-pt="Desenvolvimento de software" data-en="Software development">Software development</h3><p data-pt="Aplicações e utilitários orientados a necessidades concretas." data-en="Applications and utilities designed around real-world needs.">Applications and utilities designed around real-world needs.</p></article>
+<article class="card expertise-card"><div class="expertise-icon">&gt;_</div><span class="tag">02 / AUTOMATION</span><h3 data-pt="Automação Windows" data-en="Windows automation">Windows automation</h3><p data-pt="Simplificação de tarefas repetitivas e fluxos técnicos." data-en="Streamlining repetitive tasks and technical workflows.">Streamlining repetitive tasks and technical workflows.</p></article>
+<article class="card expertise-card"><div class="expertise-icon">▦</div><span class="tag">03 / SYSTEMS</span><h3 data-pt="Ferramentas de sistemas" data-en="Systems tooling">Systems tooling</h3><p data-pt="Diagnóstico, organização e gestão de ambientes informáticos." data-en="Diagnostics, organization and management of IT environments.">Diagnostics, organization and management of IT environments.</p></article>
+</div></div></section>
+<section id="produtos" class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="03 / SOFTWARE" data-en="03 / SOFTWARE">03 / SOFTWARE</span></div><div class="section-heading"><div><h2 data-pt="Produtos em desenvolvimento" data-en="Products in development">Products in development</h2><p class="muted" data-pt="Três produtos independentes, cada um com uma finalidade específica." data-en="Three independent products, each with its own purpose.">Three independent products, each with its own purpose.</p></div><span class="catalog-count">03 / PRODUCTS</span></div><div class="product-grid">{products.map(p=><article class="card product-card"><div class="product-top"><span class="product-number">{p.number} / 03</span><span class="product-status"><span class="mini-dot"></span><span data-pt="EM DESENVOLVIMENTO" data-en="IN DEVELOPMENT">IN DEVELOPMENT</span></span></div><div class="product-icon" aria-hidden="true">{p.icon}</div><div class="tag">{p.type}</div><h3>{p.name}</h3><p data-pt={p.pt} data-en={p.en}>{p.en}</p><div class="product-bottom"><a class="product-link" href={`/produtos/${p.slug}/`}><span data-pt="Ver detalhes" data-en="View details">View details</span><span aria-hidden="true">↗</span></a></div></article>)}</div><p class="product-disclaimer muted" data-pt="Os produtos apresentados ainda não estão disponíveis para compra." data-en="The products shown are not currently available for purchase.">The products shown are not currently available for purchase.</p></section>
+<section id="contacto" class="contact-section"><div class="wrap contact-inner"><div><div class="section-kicker"><span class="kicker-line"></span><span data-pt="04 / CONTACTO" data-en="04 / CONTACT">04 / CONTACT</span></div><h2 data-pt="Vamos criar algo útil." data-en="Let's build something useful.">Let's build something useful.</h2><p class="lead" data-pt="Explora os meus projetos e acompanha as próximas novidades através do GitHub." data-en="Explore my projects and follow future updates on GitHub.">Explore my projects and follow future updates on GitHub.</p></div><a class="btn" href="https://github.com/sacramento-mlp" rel="noopener noreferrer"><span data-pt="Ver perfil GitHub" data-en="Visit GitHub profile">Visit GitHub profile</span> ↗</a></div></section>
 </main>
-<footer><div class="wrap">© {new Date().getFullYear()} Mário Sacramento · <span data-pt="Desenvolvido com Astro" data-en="Built with Astro">Desenvolvido com Astro</span></div></footer>
+<footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span data-pt="Desenvolvido com Astro · Alojado no GitHub Pages" data-en="Built with Astro · Hosted on GitHub Pages">Built with Astro · Hosted on GitHub Pages</span><a href="#inicio" data-pt="Voltar ao topo ↑" data-en="Back to top ↑">Back to top ↑</a></div></footer>
 <script>
-function applyLang(lang: 'pt'|'en'){document.documentElement.lang=lang;document.querySelectorAll<HTMLElement>('[data-pt][data-en]').forEach(el=>{el.textContent=el.dataset[lang]||''});const b=document.querySelector<HTMLButtonElement>('#lang');if(b)b.textContent=lang==='pt'?'EN':'PT';try{localStorage.setItem('lang',lang)}catch{}}
-applyLang(document.documentElement.lang==='en'?'en':'pt');
+function applyLang(lang:'pt'|'en'){document.documentElement.lang=lang;document.querySelectorAll<HTMLElement>('[data-pt][data-en]').forEach(el=>{el.textContent=el.dataset[lang]||''});const b=document.querySelector<HTMLButtonElement>('#lang');if(b)b.textContent=lang==='pt'?'EN':'PT';try{localStorage.setItem('lang',lang)}catch{}}
+applyLang(document.documentElement.lang==='pt'?'pt':'en');
 document.querySelector('#lang')?.addEventListener('click',()=>applyLang(document.documentElement.lang==='pt'?'en':'pt'));
 document.querySelector('#theme')?.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('theme',next)}catch{}});
 </script>
