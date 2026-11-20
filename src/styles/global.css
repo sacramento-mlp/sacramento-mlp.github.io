@@ -89,3 +89,34 @@ body{overflow-x:hidden}
 .top .navlinks>a,.top .navlinks>a:nth-child(1),.top .navlinks>a:nth-child(2),.top .navlinks>a:nth-child(3),.top .navlinks>a:nth-child(4){display:inline-block;grid-area:auto;grid-row:auto;grid-column:auto;transform:none;justify-self:auto;align-self:auto;padding:5px 0;font-size:clamp(.68rem,2.7vw,.85rem);white-space:nowrap}
 .top .nav-controls{position:absolute;right:0;top:14px;display:flex;gap:5px;width:auto}
 }
+
+
+/* v0.3.2 — intentional mobile composition, not a shrunken desktop */
+@media(max-width:760px){
+  .top .nav{gap:0;padding:13px 0 0}
+  .top .brand{margin-bottom:12px}
+  .top .brand-name{font-size:.93rem;letter-spacing:-.025em}
+  .top .navlinks{border-top:1px solid var(--line);padding:8px 0 9px;gap:8px}
+  .top .navlinks>a{font-weight:650;color:var(--muted)}
+  .top .nav-controls{top:12px}
+  .top .switch{min-width:36px;min-height:36px;border-radius:10px}
+  .hero-shell{background:radial-gradient(ellipse 110% 75% at 90% 50%,rgba(31,92,166,.12),transparent 70%),var(--bg)}
+  .hero-shell .hero-grid{padding-top:46px;padding-bottom:52px;gap:0}
+  .hero-shell .hero h1{font-size:clamp(2.75rem,10.4vw,4.1rem);line-height:1.07;margin:19px 0 19px}
+  .hero-shell .hero .lead{max-width:40ch;font-size:1.01rem;line-height:1.65;margin:18px 0 0}
+  .hero-shell .hero-name{font-size:.8rem;margin:0;letter-spacing:0}
+  .hero-shell .hero .actions{margin-top:29px;display:flex;flex-wrap:wrap;gap:10px}
+  .hero-shell .hero .actions .btn{flex:1 1 46%;min-height:48px;font-size:.79rem;padding:12px 9px}
+  .hero-shell .hero-meta{margin-top:28px;gap:10px 15px}
+  .hero-shell .hero-visual{display:none}
+  .section-space{padding-top:65px;padding-bottom:65px}
+  .section-heading{gap:8px;margin-bottom:22px}
+  .expertise-grid{gap:12px}
+  .product-grid{gap:14px}
+  .product-card{border-radius:15px}
+}
+@media(max-width:390px){
+  .hero-shell .hero h1{font-size:2.52rem}
+  .hero-shell .hero .actions .btn{font-size:.74rem}
+  .hero-shell .availability{font-size:.6rem}
+}
