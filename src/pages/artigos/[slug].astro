@@ -1,4 +1,5 @@
 ---
+import SiteHeader from '../../components/SiteHeader.astro';
 import '../../styles/global.css';
 export async function getStaticPaths(){
   const { publishedArticles } = await import('../../data/articles');
@@ -20,7 +21,7 @@ const { article } = Astro.props;
 <script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
 </head><body class="articles-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="top"><nav class="wrap nav" aria-label="Main navigation"><a class="brand" href="/"><img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt=""/><span class="brand-name">Mário Sacramento</span></a><div class="navlinks"><a href="/" data-pt="Início" data-en="Home">Home</a><a href="/cv/" data-pt="Currículo" data-en="Résumé">Résumé</a><a href="/#produtos" data-pt="Produtos" data-en="Products">Products</a><a href="/artigos/" data-pt="Artigos" data-en="Articles">Articles</a><div class="nav-controls"><button class="switch" id="lang" type="button" aria-label="Change language">PT</button><button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button></div></div></nav></header>
+<SiteHeader current="articles" />
 <main id="main-content"><article>
 <header class="article-detail-hero"><div class="wrap article-reading"><a class="back-link" href="/artigos/" data-pt="← Todos os artigos" data-en="← All articles">← All articles</a><div class="section-kicker"><span class="kicker-line"></span><span>{article.category.toUpperCase()} · <time datetime={article.date}>{article.date}</time> · {article.readMinutes} MIN</span></div><h1 data-pt={article.title.pt} data-en={article.title.en}>{article.title.en}</h1><p class="lead" data-pt={article.summary.pt} data-en={article.summary.en}>{article.summary.en}</p></div></header>
 <div class="wrap article-reading article-body">{article.sections.map(section=><section><h2 data-pt={section.heading.pt} data-en={section.heading.en}>{section.heading.en}</h2>{section.paragraphs.map(p=><p data-pt={p.pt} data-en={p.en}>{p.en}</p>)}</section>)}
