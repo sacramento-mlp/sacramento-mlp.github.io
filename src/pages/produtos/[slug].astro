@@ -25,7 +25,7 @@ const {product}=Astro.props;
 <meta name="theme-color" content="#080f1d"/>
 <link rel="icon" type="image/png" href="/brand/ms-logo.png"/>
 <title>{product.name} | Mário Sacramento</title>
-<script src="/js/preferences-init.js"></script>
+<script is:inline src="/js/preferences-init.js"></script>
 </head>
 <body class="product-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -50,5 +50,5 @@ const {product}=Astro.props;
 </div></section>
 </main>
 <SiteFooter />
-<script src="/js/preferences.js" defer></script>
+<script is:inline src="/js/preferences.js" defer></script>
 </body></html>
