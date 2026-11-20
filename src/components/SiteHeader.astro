@@ -1,0 +1,31 @@
+---
+interface Props {
+  current?: 'home' | 'cv' | 'products' | 'articles';
+}
+const { current = 'home' } = Astro.props;
+const atHome = current === 'home';
+const items = [
+  { href: atHome ? '#sobre' : '/#sobre', pt: 'Sobre', en: 'About', active: false },
+  { href: '/cv/', pt: 'Currículo', en: 'Résumé', active: current === 'cv' },
+  { href: atHome ? '#produtos' : '/#produtos', pt: 'Produtos', en: 'Products', active: current === 'products' },
+  { href: '/artigos/', pt: 'Artigos', en: 'Articles', active: current === 'articles' },
+  { href: atHome ? '#contacto' : '/#contacto', pt: 'Contacto', en: 'Contact', active: false }
+];
+---
+<header class="top">
+  <nav class="wrap nav" aria-label="Main navigation">
+    <a class="brand" href={atHome ? '#inicio' : '/'} aria-label="Mário Sacramento — home">
+      <img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt="" />
+      <span class="brand-name">Mário Sacramento</span>
+    </a>
+    <div class="navlinks">
+      {items.map(item =>
+        <a href={item.href} data-pt={item.pt} data-en={item.en} aria-current={item.active ? 'page' : undefined}>{item.en}</a>
+      )}
+      <div class="nav-controls">
+        <button class="switch" id="lang" type="button" aria-label="Change language">PT</button>
+        <button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button>
+      </div>
+    </div>
+  </nav>
+</header>
