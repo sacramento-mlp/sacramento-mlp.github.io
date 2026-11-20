@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+const skills=[
+ {n:'01',title:'Software development',pt:'Desenvolvimento de software',detail:'Python · Application architecture',detailPt:'Python · Arquitetura de aplicações'},
+ {n:'02',title:'Windows automation',pt:'Automação Windows',detail:'PowerShell · Technical workflows',detailPt:'PowerShell · Fluxos técnicos'},
+ {n:'03',title:'Systems administration',pt:'Administração de sistemas',detail:'Windows · Domain environments',detailPt:'Windows · Ambientes de domínio'}
+];
+---
+<!doctype html><html lang="en" data-theme="dark"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Mário Sacramento — professional profile, technical focus and software portfolio."/>
+<meta name="theme-color" content="#080f1d"/><link rel="icon" type="image/png" href="/brand/ms-logo.png"/>
+<title>Professional profile | Mário Sacramento</title>
+<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
+</head><body class="cv-page">
+<header class="top"><nav class="wrap nav" aria-label="Main navigation">
+<a class="brand" href="/"><img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt=""/><span class="brand-name">Mário Sacramento</span></a>
+<div class="navlinks">
+<a href="/" data-pt="Início" data-en="Home">Home</a>
+<a href="/cv/" aria-current="page" data-pt="Currículo" data-en="Résumé">Résumé</a>
+<a href="/#produtos" data-pt="Produtos" data-en="Products">Products</a>
+<a href="/#contacto" data-pt="Contacto" data-en="Contact">Contact</a>
+<div class="nav-controls"><button class="switch" id="lang" type="button" aria-label="Change language">PT</button><button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button></div>
+</div></nav></header>
+<main>
+<section class="cv-hero"><div class="wrap"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="PERFIL PROFISSIONAL" data-en="PROFESSIONAL PROFILE">PROFESSIONAL PROFILE</span></div>
+<div class="cv-hero-grid"><div><h1>Mário<br/>Sacramento<span class="gradient-text">.</span></h1><p class="cv-role">Software & IT</p><p class="lead" data-pt="Desenvolvimento de software, automação Windows e soluções técnicas para desafios reais." data-en="Software development, Windows automation and practical technical solutions for real-world challenges.">Software development, Windows automation and practical technical solutions for real-world challenges.</p>
+<div class="actions"><a class="btn" href="/#produtos"><span data-pt="Explorar projetos" data-en="Explore projects">Explore projects</span> ↗</a><a class="btn secondary" href="https://github.com/sacramento-mlp" rel="noopener noreferrer">GitHub ↗</a></div></div>
+<div class="cv-identity"><img src="/brand/ms-logo.png" alt="" width="180" height="150"/><div class="cv-identity-name">MÁRIO SACRAMENTO</div><div class="cv-identity-tag">TECHNOLOGY SOLUTIONS</div></div></div></div></section>
+<section class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="01 / RESUMO" data-en="01 / SUMMARY">01 / SUMMARY</span></div><div class="cv-two-col"><h2 data-pt="Tecnologia aplicada a necessidades concretas." data-en="Technology focused on real needs.">Technology focused on real needs.</h2><div><p class="lead" data-pt="Este perfil reúne áreas de interesse técnico e projetos em desenvolvimento. A informação sobre experiência profissional, formação e certificações será acrescentada após confirmação." data-en="This profile brings together technical areas of focus and projects in development. Employment history, education and certifications will be added after verification.">This profile brings together technical areas of focus and projects in development. Employment history, education and certifications will be added after verification.</p><p class="muted" data-pt="As competências abaixo descrevem áreas de trabalho do portfólio, não certificações ou experiência profissional comprovada." data-en="The areas below describe the portfolio's technical focus, not verified certifications or employment experience.">The areas below describe the portfolio's technical focus, not verified certifications or employment experience.</p></div></div></section>
+<section class="section-alt"><div class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="02 / ÁREAS TÉCNICAS" data-en="02 / TECHNICAL FOCUS">02 / TECHNICAL FOCUS</span></div><h2 data-pt="Áreas de atuação" data-en="Areas of focus">Areas of focus</h2><div class="cv-skills">{skills.map(s=><article class="cv-skill"><span class="cv-skill-number">{s.n}</span><div><h3 data-pt={s.pt} data-en={s.title}>{s.title}</h3><p data-pt={s.detailPt} data-en={s.detail}>{s.detail}</p></div><span class="cv-skill-arrow" aria-hidden="true">↗</span></article>)}</div></div></section>
+<section class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="03 / PROJETOS" data-en="03 / SELECTED PROJECTS">03 / SELECTED PROJECTS</span></div><div class="cv-two-col"><div><h2 data-pt="Projetos que estou a desenvolver." data-en="Projects in development.">Projects in development.</h2><p class="muted" data-pt="Cada projeto tem a sua própria página, âmbito e estado de desenvolvimento." data-en="Each project has its own page, scope and development status.">Each project has its own page, scope and development status.</p></div><div class="cv-project-list"><a href="/produtos/diskguardian/"><span>DiskGuardian</span><span>↗</span></a><a href="/produtos/windows-technical-toolkit/"><span>Windows Technical Toolkit</span><span>↗</span></a><a href="/produtos/domain-admin-toolkit/"><span>Domain Admin Toolkit</span><span>↗</span></a></div></div></section>
+<section class="cv-closing"><div class="wrap"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="04 / PRÓXIMOS PASSOS" data-en="04 / NEXT STEPS">04 / NEXT STEPS</span></div><h2 data-pt="Um currículo em construção." data-en="A profile taking shape.">A profile taking shape.</h2><p class="lead" data-pt="O histórico profissional, a formação e os contactos diretos serão publicados depois de revistos e autorizados." data-en="Career history, education and direct contact details will be published once reviewed and approved.">Career history, education and direct contact details will be published once reviewed and approved.</p><a class="btn secondary" href="/" data-pt="Voltar ao portfólio" data-en="Back to portfolio">Back to portfolio</a></div></section>
+</main><footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span>TECHNOLOGY SOLUTIONS</span><a href="/" data-pt="Página inicial ↑" data-en="Back to home ↑">Back to home ↑</a></div></footer>
+<script>
+function applyLang(lang:'pt'|'en'){document.documentElement.lang=lang;document.querySelectorAll<HTMLElement>('[data-pt][data-en]').forEach(el=>{el.textContent=el.dataset[lang]||''});const b=document.querySelector<HTMLButtonElement>('#lang');if(b)b.textContent=lang==='pt'?'EN':'PT';try{localStorage.setItem('lang',lang)}catch{}}
+applyLang(document.documentElement.lang==='pt'?'pt':'en');
+document.querySelector('#lang')?.addEventListener('click',()=>applyLang(document.documentElement.lang==='pt'?'en':'pt'));
+document.querySelector('#theme')?.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('theme',next)}catch{}});
+</script></body></html>
