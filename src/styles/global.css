@@ -120,3 +120,13 @@ body{overflow-x:hidden}
   .hero-shell .hero .actions .btn{font-size:.74rem}
   .hero-shell .availability{font-size:.6rem}
 }
+
+
+/* D4 personal brand — scalable vector monogram */
+.brand-logo{display:block;width:58px;height:44px;object-fit:contain;flex-shrink:0}
+.top .brand{gap:9px}
+.brand-name{font-weight:800}
+@media(max-width:760px){
+.top .brand-logo{width:49px;height:38px}
+.top .brand{margin-bottom:12px}
+}
