@@ -1,0 +1,16 @@
+---
+interface Props {
+  home?: boolean;
+}
+const { home = false } = Astro.props;
+---
+<footer>
+  <div class="wrap footer-inner">
+    <span>© {new Date().getFullYear()} Mário Sacramento</span>
+    {home ?
+      <span data-pt="Desenvolvido com Astro · Alojado no GitHub Pages" data-en="Built with Astro · Hosted on GitHub Pages">Built with Astro · Hosted on GitHub Pages</span>
+      : <span>TECHNOLOGY SOLUTIONS</span>
+    }
+    <a href={home ? '#inicio' : '/'} data-pt={home ? 'Voltar ao topo ↑' : 'Página inicial ↑'} data-en={home ? 'Back to top ↑' : 'Back to home ↑'}>{home ? 'Back to top ↑' : 'Back to home ↑'}</a>
+  </div>
+</footer>
