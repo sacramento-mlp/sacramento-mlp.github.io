@@ -1,11 +1,13 @@
 ---
 import '../../styles/global.css';
+export function getStaticPaths() {
 const catalog = [
   { slug:'diskguardian', name:'DiskGuardian', tech:'Python · Windows', pt:'Gestão e análise de armazenamento', en:'Storage management and analysis', descriptionPt:'Projeto de software para analisar, organizar e gerir armazenamento em Windows, com foco na segurança dos dados e em operações controladas.', descriptionEn:'Software project for analyzing, organizing and managing storage on Windows, focused on data safety and controlled operations.' },
   { slug:'windows-technical-toolkit', name:'Windows Technical Toolkit', tech:'PowerShell · Windows', pt:'Diagnóstico, manutenção e automação', en:'Diagnostics, maintenance and automation', descriptionPt:'Conjunto independente de ferramentas PowerShell para apoiar tarefas técnicas e rotinas de manutenção de computadores Windows.', descriptionEn:'An independent collection of PowerShell tools supporting technical tasks and maintenance routines on Windows computers.' },
   { slug:'domain-admin-toolkit', name:'Domain Admin Toolkit', tech:'PowerShell · Active Directory', pt:'Administração de ambientes empresariais', en:'Enterprise environment administration', descriptionPt:'Ferramentas técnicas para apoiar a administração e o diagnóstico de ambientes Windows com domínio e Active Directory.', descriptionEn:'Technical tools to support administration and diagnostics in domain-based Windows and Active Directory environments.' }
-];
-export function getStaticPaths() { return catalog.map(product=>({params:{slug:product.slug},props:{product}})); }
+]; 
+return catalog.map(product=>({params:{slug:product.slug},props:{product}}));
+}
 const {product}=Astro.props;
 ---
 <!doctype html>
