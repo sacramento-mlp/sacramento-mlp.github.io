@@ -1,6 +1,8 @@
 /* Portfolio v0.3 — dark-first visual system. Existing product pages retain their base styles. */
 :root{--bg:#080f1d;--panel:#101c2e;--text:#edf5ff;--muted:#99a9c2;--line:#24364e;--accent:#6db8ff;--soft:#172c46;color-scheme:dark}
 html[data-theme=light]{--bg:#f5f8fd;--panel:#fff;--text:#15253b;--muted:#566780;--line:#dbe4f0;--accent:#1466c9;--soft:#eaf2fd;color-scheme:light}
+/* Keep gradient headline legible against light backgrounds. */
+html[data-theme=light] .gradient-text{background-image:linear-gradient(100deg,#1555b7,#087a86)}
 body{background:var(--bg);color:var(--text)}
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(18px);border-color:var(--line)}
 .nav{min-height:84px}.brand{display:flex;align-items:center;gap:12px;font-size:1rem;letter-spacing:-.02em}.brand-mark{display:grid;place-items:center;width:43px;height:43px;border:1px solid var(--accent);border-radius:12px;font-size:1.08rem;color:var(--text);background:var(--soft)}.brand-mark span{color:var(--accent)}.brand-name{white-space:nowrap}
