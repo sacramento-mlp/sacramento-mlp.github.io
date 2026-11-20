@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+const products = [
+ {name:'DiskGuardian',type:'Windows · Python',pt:'Análise e gestão de armazenamento, com foco em segurança e controlo.',en:'Storage analysis and management focused on safety and control.'},
+ {name:'Windows Technical Toolkit',type:'PowerShell · Windows',pt:'Ferramentas técnicas de diagnóstico, manutenção e automação.',en:'Technical tools for diagnostics, maintenance and automation.'},
+ {name:'Domain Admin Toolkit',type:'PowerShell · Active Directory',pt:'Ferramentas de administração para ambientes Windows e domínios.',en:'Administration tools for Windows and domain environments.'}
+];
+---
+<!doctype html>
+<html lang="pt" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Mário Sacramento — portfólio profissional, desenvolvimento de software e automação Windows." />
+<meta name="theme-color" content="#14213b" />
+<title>Mário Sacramento | Software & IT</title>
+<script is:inline>
+try { const t=localStorage.getItem('theme');document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');const l=localStorage.getItem('lang');if(l==='en'){document.documentElement.lang='en'} } catch {}
+</script>
+</head>
+<body>
+<header class="top"><nav class="wrap nav" aria-label="Main navigation">
+<a class="brand" href="#inicio">Mário Sacramento<span style="color:var(--accent)">.</span></a>
+<div class="navlinks">
+<a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a>
+<a href="#projetos" data-pt="Projetos" data-en="Projects">Projetos</a>
+<a href="#produtos" data-pt="Software" data-en="Software">Software</a>
+<a href="#contacto" data-pt="Contacto" data-en="Contact">Contacto</a>
+<button class="switch" id="lang" type="button" aria-label="Change language">EN</button>
+<button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button>
+</div></nav></header>
+<main id="inicio">
+<div class="wrap hero">
+<div class="eyebrow" data-pt="Portfólio profissional · Tecnologia" data-en="Professional portfolio · Technology">Portfólio profissional · Tecnologia</div>
+<h1>Mário Sacramento</h1>
+<p class="lead" data-pt="Desenvolvimento de software, automação Windows e ferramentas técnicas para resolver problemas reais." data-en="Software development, Windows automation and technical tools built to solve real problems.">Desenvolvimento de software, automação Windows e ferramentas técnicas para resolver problemas reais.</p>
+<div class="actions"><a class="btn" href="#projetos" data-pt="Explorar projetos" data-en="Explore projects">Explorar projetos</a><a class="btn secondary" href="#contacto" data-pt="Entrar em contacto" data-en="Get in touch">Entrar em contacto</a></div>
+</div>
+<section id="sobre" class="wrap"><div class="eyebrow" data-pt="Perfil" data-en="Profile">Perfil</div><h2 data-pt="Sobre mim" data-en="About me">Sobre mim</h2><p class="lead" data-pt="Sou Mário Sacramento. Este espaço reúne projetos, ferramentas e soluções de software que desenvolvo. O currículo detalhado e a experiência profissional serão adicionados após validação." data-en="I'm Mário Sacramento. This site brings together projects, tools and software solutions I develop. My detailed résumé and work experience will be added after review.">Sou Mário Sacramento. Este espaço reúne projetos, ferramentas e soluções de software que desenvolvo. O currículo detalhado e a experiência profissional serão adicionados após validação.</p></section>
+<section id="projetos" class="wrap"><div class="eyebrow" data-pt="Trabalho" data-en="Work">Trabalho</div><h2 data-pt="Áreas de atuação" data-en="Areas of focus">Áreas de atuação</h2><div class="grid">
+<div class="card"><span class="tag">Python</span><h3 data-pt="Desenvolvimento" data-en="Development">Desenvolvimento</h3><p data-pt="Aplicações, utilitários e sistemas orientados a necessidades práticas." data-en="Applications, utilities and systems focused on practical needs.">Aplicações, utilitários e sistemas orientados a necessidades práticas.</p></div>
+<div class="card"><span class="tag">PowerShell</span><h3 data-pt="Automação" data-en="Automation">Automação</h3><p data-pt="Simplificação de tarefas de manutenção e administração Windows." data-en="Simplifying Windows maintenance and administration tasks.">Simplificação de tarefas de manutenção e administração Windows.</p></div>
+<div class="card"><span class="tag">IT</span><h3 data-pt="Ferramentas técnicas" data-en="Technical tools">Ferramentas técnicas</h3><p data-pt="Diagnóstico, organização e gestão de ambientes informáticos." data-en="Diagnostics, organization and management of IT environments.">Diagnóstico, organização e gestão de ambientes informáticos.</p></div>
+</div></section>
+<section id="produtos" class="wrap"><div class="eyebrow">Software</div><h2 data-pt="Produtos em desenvolvimento" data-en="Products in development">Produtos em desenvolvimento</h2><div class="grid">{products.map(p=><article class="card"><span class="tag">{p.type}</span><h3>{p.name}</h3><p data-pt={p.pt} data-en={p.en}>{p.pt}</p><span class="muted" data-pt="Em desenvolvimento · Sem vendas ativas" data-en="In development · Not currently for sale">Em desenvolvimento · Sem vendas ativas</span></article>)}</div></section>
+<section id="contacto" class="wrap"><div class="eyebrow" data-pt="Contacto" data-en="Contact">Contacto</div><h2 data-pt="Vamos conversar" data-en="Let's connect">Vamos conversar</h2><p class="lead" data-pt="Conhece o meu trabalho e acompanha as atualizações através do GitHub." data-en="Explore my work and follow updates on GitHub.">Conhece o meu trabalho e acompanha as atualizações através do GitHub.</p><a class="btn" href="https://github.com/sacramento-mlp" rel="noopener noreferrer">GitHub ↗</a></section>
+</main>
+<footer><div class="wrap">© {new Date().getFullYear()} Mário Sacramento · <span data-pt="Desenvolvido com Astro" data-en="Built with Astro">Desenvolvido com Astro</span></div></footer>
+<script>
+function applyLang(lang: 'pt'|'en'){document.documentElement.lang=lang;document.querySelectorAll<HTMLElement>('[data-pt][data-en]').forEach(el=>{el.textContent=el.dataset[lang]||''});const b=document.querySelector<HTMLButtonElement>('#lang');if(b)b.textContent=lang==='pt'?'EN':'PT';try{localStorage.setItem('lang',lang)}catch{}}
+applyLang(document.documentElement.lang==='en'?'en':'pt');
+document.querySelector('#lang')?.addEventListener('click',()=>applyLang(document.documentElement.lang==='pt'?'en':'pt'));
+document.querySelector('#theme')?.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('theme',next)}catch{}});
+</script>
+</body></html>
