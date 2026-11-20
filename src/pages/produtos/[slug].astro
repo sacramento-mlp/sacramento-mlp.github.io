@@ -1,12 +1,12 @@
 ---
 import '../../styles/global.css';
 export function getStaticPaths() {
-const catalog = [
-  { slug:'diskguardian', name:'DiskGuardian', tech:'Python · Windows', pt:'Gestão e análise de armazenamento', en:'Storage management and analysis', descriptionPt:'Projeto de software para analisar, organizar e gerir armazenamento em Windows, com foco na segurança dos dados e em operações controladas.', descriptionEn:'Software project for analyzing, organizing and managing storage on Windows, focused on data safety and controlled operations.' },
-  { slug:'windows-technical-toolkit', name:'Windows Technical Toolkit', tech:'PowerShell · Windows', pt:'Diagnóstico, manutenção e automação', en:'Diagnostics, maintenance and automation', descriptionPt:'Conjunto independente de ferramentas PowerShell para apoiar tarefas técnicas e rotinas de manutenção de computadores Windows.', descriptionEn:'An independent collection of PowerShell tools supporting technical tasks and maintenance routines on Windows computers.' },
-  { slug:'domain-admin-toolkit', name:'Domain Admin Toolkit', tech:'PowerShell · Active Directory', pt:'Administração de ambientes empresariais', en:'Enterprise environment administration', descriptionPt:'Ferramentas técnicas para apoiar a administração e o diagnóstico de ambientes Windows com domínio e Active Directory.', descriptionEn:'Technical tools to support administration and diagnostics in domain-based Windows and Active Directory environments.' }
-]; 
-return catalog.map(product=>({params:{slug:product.slug},props:{product}}));
+  const catalog = [
+    {slug:'diskguardian',name:'DiskGuardian',index:'01',tech:'Python · Windows',type:'DESKTOP SOFTWARE',mark:'◈',pt:'Gestão inteligente de armazenamento',en:'Smarter storage management',descriptionPt:'Projeto de software para analisar, organizar e gerir armazenamento em Windows, com foco na segurança dos dados e em operações controladas.',descriptionEn:'A software project for analyzing, organizing and managing Windows storage, with a focus on data safety and controlled operations.',focusPt:['Análise de armazenamento','Organização de dados','Operações controladas'],focusEn:['Storage analysis','Data organization','Controlled operations']},
+    {slug:'windows-technical-toolkit',name:'Windows Technical Toolkit',index:'02',tech:'PowerShell · Windows',type:'TECHNICAL UTILITIES',mark:'>_',pt:'Ferramentas práticas para Windows',en:'Practical tools for Windows',descriptionPt:'Conjunto independente de ferramentas PowerShell para apoiar tarefas técnicas e rotinas de manutenção de computadores Windows.',descriptionEn:'An independent collection of PowerShell tools to support technical tasks and maintenance workflows on Windows computers.',focusPt:['Diagnóstico técnico','Rotinas de manutenção','Automação de tarefas'],focusEn:['Technical diagnostics','Maintenance workflows','Task automation']},
+    {slug:'domain-admin-toolkit',name:'Domain Admin Toolkit',index:'03',tech:'PowerShell · Active Directory',type:'ADMINISTRATION UTILITIES',mark:'⌘',pt:'Ferramentas para administração de domínios',en:'Tools for domain administration',descriptionPt:'Ferramentas técnicas para apoiar a administração e o diagnóstico de ambientes Windows com domínio e Active Directory.',descriptionEn:'Technical tools to support administration and diagnostics in domain-based Windows and Active Directory environments.',focusPt:['Administração de domínios','Diagnóstico de ambientes','Fluxos administrativos'],focusEn:['Domain administration','Environment diagnostics','Administration workflows']}
+  ];
+  return catalog.map(product=>({params:{slug:product.slug},props:{product}}));
 }
 const {product}=Astro.props;
 ---
@@ -14,44 +14,46 @@ const {product}=Astro.props;
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link rel="icon" type="image/svg+xml" href="/brand/ms-mark.svg"/>
-<meta name="description" content={product.descriptionPt}/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={product.descriptionEn}/>
+<meta name="theme-color" content="#080f1d"/>
+<link rel="icon" type="image/png" href="/brand/ms-logo.png"/>
 <title>{product.name} | Mário Sacramento</title>
 <script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
 </head>
-<body>
+<body class="product-page">
 <header class="top"><nav class="wrap nav" aria-label="Main navigation">
-<a class="brand" href="/"><img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt="" onerror="this.onerror=null;this.src='/brand/ms-mark.svg'" /><span class="brand-name">Mário Sacramento</span></a>
+<a class="brand" href="/" aria-label="Mário Sacramento home"><img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt=""/><span class="brand-name">Mário Sacramento</span></a>
 <div class="navlinks">
-<a href="/" data-pt="Início" data-en="Home">Início</a>
-<a href="/#produtos" data-pt="Produtos" data-en="Products">Produtos</a>
-<a href="/#contacto" data-pt="Contacto" data-en="Contact">Contacto</a>
-<button class="switch" id="lang" type="button" aria-label="Change language">EN</button>
-<button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button>
+<a href="/" data-pt="Início" data-en="Home">Home</a>
+<a href="/#sobre" data-pt="Sobre" data-en="About">About</a>
+<a href="/#produtos" data-pt="Produtos" data-en="Products">Products</a>
+<a href="/#contacto" data-pt="Contacto" data-en="Contact">Contact</a>
+<div class="nav-controls"><button class="switch" id="lang" type="button" aria-label="Change language">PT</button><button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button></div>
 </div></nav></header>
-<main class="wrap">
-<section class="hero">
-<div class="eyebrow">{product.tech}</div>
+<main>
+<section class="product-hero"><div class="wrap">
+<a class="back-link" href="/#produtos"><span aria-hidden="true">←</span> <span data-pt="Voltar aos produtos" data-en="Back to products">Back to products</span></a>
+<div class="product-hero-grid"><div class="product-hero-copy">
+<div class="section-kicker"><span class="kicker-line"></span><span>{product.index} / 03 — {product.type}</span></div>
 <h1>{product.name}</h1>
-<p class="lead" data-pt={product.pt} data-en={product.en}>{product.pt}</p>
-<div class="actions"><a class="btn secondary" href="/#produtos" data-pt="← Todos os produtos" data-en="← All products">← Todos os produtos</a></div>
-</section>
-<section>
-<div class="grid" style="grid-template-columns:minmax(0,1fr)">
-<article class="card">
-<span class="tag" data-pt="Em desenvolvimento" data-en="In development">Em desenvolvimento</span>
-<h2 data-pt="Sobre o projeto" data-en="About the project">Sobre o projeto</h2>
-<p class="lead" data-pt={product.descriptionPt} data-en={product.descriptionEn}>{product.descriptionPt}</p>
-<p class="muted" data-pt="Este produto ainda não está disponível para compra. As funcionalidades, os preços e a documentação serão divulgados após validação." data-en="This product is not available for purchase yet. Features, pricing and documentation will be published after validation.">Este produto ainda não está disponível para compra. As funcionalidades, os preços e a documentação serão divulgados após validação.</p>
-</article></div>
-</section>
-<section><h2 data-pt="Acompanha o desenvolvimento" data-en="Follow development">Acompanha o desenvolvimento</h2><p class="lead" data-pt="Consulta o perfil GitHub para conhecer os projetos e futuras atualizações públicas." data-en="Visit the GitHub profile for projects and future public updates.">Consulta o perfil GitHub para conhecer os projetos e futuras atualizações públicas.</p><a class="btn" href="https://github.com/sacramento-mlp" rel="noopener noreferrer">GitHub ↗</a></section>
+<p class="product-subtitle" data-pt={product.pt} data-en={product.en}>{product.en}</p>
+<p class="lead" data-pt={product.descriptionPt} data-en={product.descriptionEn}>{product.descriptionEn}</p>
+<div class="product-meta"><span class="product-state"><span class="status-dot"></span><span data-pt="Em desenvolvimento" data-en="In development">In development</span></span><span class="product-tech">{product.tech}</span></div>
+<div class="actions"><a class="btn" href="/#contacto"><span data-pt="Contacto" data-en="Get in touch">Get in touch</span><span aria-hidden="true">↗</span></a><a class="btn secondary" href="/#produtos"><span data-pt="Explorar outros produtos" data-en="Explore other products">Explore other products</span></a></div>
+</div>
+<div class="product-showcase" aria-hidden="true"><div class="showcase-top"><span>MS / PRODUCT {product.index}</span><span class="showcase-pulse">● DEVELOPMENT</span></div><div class="showcase-center"><div class="showcase-symbol">{product.mark}</div><div class="showcase-name">{product.name}</div><div class="showcase-tech">{product.tech}</div></div><div class="showcase-bottom"><span>TECHNOLOGY SOLUTIONS</span><span>{product.index} / 03</span></div></div>
+</div></div></section>
+<section class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="SOBRE O PROJETO" data-en="ABOUT THE PROJECT">ABOUT THE PROJECT</span></div><div class="product-about-grid"><div><h2 data-pt="Criado com uma finalidade clara." data-en="Built with a clear purpose.">Built with a clear purpose.</h2><p class="muted" data-pt="Cada produto é desenvolvido de forma independente, com objetivos e âmbito próprios." data-en="Each product is developed independently, with its own goals and scope.">Each product is developed independently, with its own goals and scope.</p></div><div><p class="lead" data-pt={product.descriptionPt} data-en={product.descriptionEn}>{product.descriptionEn}</p><div class="focus-list">{product.focusEn.map((focus,i)=><div class="focus-item"><span class="focus-index">0{i+1}</span><span data-pt={product.focusPt[i]} data-en={focus}>{focus}</span><span class="focus-icon" aria-hidden="true">↗</span></div>)}</div></div></div></section>
+<section class="product-notice"><div class="wrap product-notice-inner"><div><div class="section-kicker"><span class="kicker-line"></span><span data-pt="ESTADO ATUAL" data-en="CURRENT STATUS">CURRENT STATUS</span></div><h2 data-pt="Em desenvolvimento." data-en="Work in progress.">Work in progress.</h2><p class="muted" data-pt="Este produto ainda não está disponível para compra. As funcionalidades, os preços e a documentação serão publicados após validação." data-en="This product is not available for purchase yet. Features, pricing and documentation will be published after validation.">This product is not available for purchase yet. Features, pricing and documentation will be published after validation.</p></div><a class="btn secondary" href="https://github.com/sacramento-mlp" rel="noopener noreferrer"><span data-pt="Ver perfil GitHub" data-en="Visit GitHub profile">Visit GitHub profile</span> ↗</a></div></section>
+<section class="wrap section-space product-next"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="EXPLORAR MAIS" data-en="EXPLORE MORE">EXPLORE MORE</span></div><h2 data-pt="Outros produtos" data-en="Other products">Other products</h2><div class="product-next-grid">
+{[{slug:'diskguardian',name:'DiskGuardian',number:'01'},{slug:'windows-technical-toolkit',name:'Windows Technical Toolkit',number:'02'},{slug:'domain-admin-toolkit',name:'Domain Admin Toolkit',number:'03'}].filter(p=>p.slug!==product.slug).map(p=><a class="next-product-card" href={`/produtos/${p.slug}/`}><span class="tag">{p.number} / 03</span><strong>{p.name}</strong><span class="next-arrow" aria-hidden="true">↗</span></a>)}
+</div></section>
 </main>
-<footer><div class="wrap">© {new Date().getFullYear()} Mário Sacramento</div></footer>
+<footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span>TECHNOLOGY SOLUTIONS</span><a href="/" data-pt="Página inicial ↑" data-en="Back to home ↑">Back to home ↑</a></div></footer>
 <script>
 function applyLang(lang:'pt'|'en'){document.documentElement.lang=lang;document.querySelectorAll<HTMLElement>('[data-pt][data-en]').forEach(el=>{el.textContent=el.dataset[lang]||''});const b=document.querySelector<HTMLButtonElement>('#lang');if(b)b.textContent=lang==='pt'?'EN':'PT';try{localStorage.setItem('lang',lang)}catch{}}
-applyLang(document.documentElement.lang==='en'?'en':'pt');
+applyLang(document.documentElement.lang==='pt'?'pt':'en');
 document.querySelector('#lang')?.addEventListener('click',()=>applyLang(document.documentElement.lang==='pt'?'en':'pt'));
 document.querySelector('#theme')?.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('theme',next)}catch{}});
 </script>
