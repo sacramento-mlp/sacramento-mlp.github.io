@@ -51,10 +51,5 @@ const {product}=Astro.props;
 </div></section>
 </main>
 <footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span>TECHNOLOGY SOLUTIONS</span><a href="/" data-pt="Página inicial ↑" data-en="Back to home ↑">Back to home ↑</a></div></footer>
-<script>
-function applyLang(lang:'pt'|'en'){document.documentElement.lang=lang;document.querySelectorAll<HTMLElement>('[data-pt][data-en]').forEach(el=>{el.textContent=el.dataset[lang]||''});const b=document.querySelector<HTMLButtonElement>('#lang');if(b)b.textContent=lang==='pt'?'EN':'PT';try{localStorage.setItem('lang',lang)}catch{}}
-applyLang(document.documentElement.lang==='pt'?'pt':'en');
-document.querySelector('#lang')?.addEventListener('click',()=>applyLang(document.documentElement.lang==='pt'?'en':'pt'));
-document.querySelector('#theme')?.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('theme',next)}catch{}});
-</script>
+<script src="/js/preferences.js" defer></script>
 </body></html>
