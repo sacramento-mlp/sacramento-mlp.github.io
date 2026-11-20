@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+import { publishedArticles } from '../data/articles';
+const categoryLabels: Record<string,{en:string;pt:string}> = {
+  windows:{en:'Windows',pt:'Windows'},powershell:{en:'PowerShell',pt:'PowerShell'},
+  security:{en:'Security',pt:'Segurança'},development:{en:'Development',pt:'Desenvolvimento'}
+};
+---
+<!doctype html><html lang="en" data-theme="dark"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Technical articles, practical guides and insights about Windows, PowerShell and software development."/>
+<link rel="canonical" href="https://sacramento-mlp.github.io/artigos/"/>
+<link rel="icon" type="image/png" href="/brand/ms-logo.png"/>
+<meta name="theme-color" content="#080f1d"/>
+<meta property="og:type" content="website"/><meta property="og:title" content="Articles & Guides | Mário Sacramento"/>
+<meta property="og:description" content="Practical technology articles and guides."/>
+<title>Articles & Guides | Mário Sacramento</title>
+<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark';document.documentElement.lang=localStorage.getItem('lang')==='pt'?'pt':'en'}catch{}</script>
+</head><body class="articles-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="top"><nav class="wrap nav" aria-label="Main navigation"><a class="brand" href="/"><img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt=""/><span class="brand-name">Mário Sacramento</span></a><div class="navlinks">
+<a href="/" data-pt="Início" data-en="Home">Home</a>
+<a href="/cv/" data-pt="Currículo" data-en="Résumé">Résumé</a>
+<a href="/#produtos" data-pt="Produtos" data-en="Products">Products</a>
+<a href="/artigos/" aria-current="page" data-pt="Artigos" data-en="Articles">Articles</a>
+<div class="nav-controls"><button class="switch" id="lang" type="button" aria-label="Change language">PT</button><button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button></div>
+</div></nav></header>
+<main id="main-content">
+<section class="articles-hero"><div class="wrap"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="CONHECIMENTO / RECURSOS" data-en="KNOWLEDGE / RESOURCES">KNOWLEDGE / RESOURCES</span></div><h1 data-pt="Artigos & Guias" data-en="Articles & Guides">Articles & Guides</h1><p class="lead" data-pt="Guias práticos, explicações técnicas e recursos para trabalhar melhor com tecnologia." data-en="Practical guides, technical explanations and resources to help you work better with technology.">Practical guides, technical explanations and resources to help you work better with technology.</p></div></section>
+<section class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="BIBLIOTECA" data-en="LIBRARY">LIBRARY</span></div>
+{publishedArticles.length > 0 ?
+<div class="article-grid">{publishedArticles.map(article=><a class="article-card" href={`/artigos/${article.slug}/`}><span class="article-card-category" data-pt={categoryLabels[article.category].pt} data-en={categoryLabels[article.category].en}>{categoryLabels[article.category].en}</span><h2 data-pt={article.title.pt} data-en={article.title.en}>{article.title.en}</h2><p data-pt={article.summary.pt} data-en={article.summary.en}>{article.summary.en}</p><div class="article-card-footer"><span><time datetime={article.date}>{article.date}</time> · {article.readMinutes} min</span><span data-pt="Ler artigo ↗" data-en="Read article ↗">Read article ↗</span></div></a>)}</div>
+:<div class="articles-empty"><span class="articles-empty-icon" aria-hidden="true">✦</span><h2 data-pt="Os primeiros artigos estão a ser preparados." data-en="The first articles are being prepared.">The first articles are being prepared.</h2><p class="muted" data-pt="Estamos a preparar conteúdos úteis sobre Windows, PowerShell, segurança e desenvolvimento. Os artigos serão publicados depois de revistos." data-en="Useful content about Windows, PowerShell, security and development is in preparation. Articles will be published after review.">Useful content about Windows, PowerShell, security and development is in preparation. Articles will be published after review.</p><a class="btn secondary" href="/" data-pt="Explorar o portfólio" data-en="Explore the portfolio">Explore the portfolio</a></div>}
+</section>
+</main><footer><div class="wrap footer-inner"><span>© {new Date().getFullYear()} Mário Sacramento</span><span>TECHNOLOGY SOLUTIONS</span><a href="/" data-pt="Página inicial ↑" data-en="Back to home ↑">Back to home ↑</a></div></footer>
+<script src="/js/preferences.js" defer></script>
+</body></html>
