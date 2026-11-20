@@ -39,7 +39,4 @@
 .articles-empty{padding:40px 22px}
 .article-detail-hero{padding:40px 0 55px}
 .article-body{padding-top:20px;padding-bottom:60px}
-/* Five destinations must remain visible on narrow screens without horizontal scrolling. */
-.top .navlinks{overflow:visible;display:flex;flex-wrap:wrap;justify-content:flex-start;column-gap:clamp(14px,4vw,26px);row-gap:3px}
-.top .navlinks>a{display:inline-flex;flex-shrink:0;white-space:nowrap;font-size:clamp(.72rem,2.8vw,.84rem);min-height:32px;align-items:center}
 }
