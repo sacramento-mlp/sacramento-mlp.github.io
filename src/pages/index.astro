@@ -1,9 +1,9 @@
 ---
 import '../styles/global.css';
 const products = [
- {name:'DiskGuardian',type:'Windows · Python',pt:'Análise e gestão de armazenamento, com foco em segurança e controlo.',en:'Storage analysis and management focused on safety and control.'},
- {name:'Windows Technical Toolkit',type:'PowerShell · Windows',pt:'Ferramentas técnicas de diagnóstico, manutenção e automação.',en:'Technical tools for diagnostics, maintenance and automation.'},
- {name:'Domain Admin Toolkit',type:'PowerShell · Active Directory',pt:'Ferramentas de administração para ambientes Windows e domínios.',en:'Administration tools for Windows and domain environments.'}
+ {slug:'diskguardian',name:'DiskGuardian',type:'Windows · Python',pt:'Análise e gestão de armazenamento, com foco em segurança e controlo.',en:'Storage analysis and management focused on safety and control.'},
+ {slug:'windows-technical-toolkit',name:'Windows Technical Toolkit',type:'PowerShell · Windows',pt:'Ferramentas técnicas de diagnóstico, manutenção e automação.',en:'Technical tools for diagnostics, maintenance and automation.'},
+ {slug:'domain-admin-toolkit',name:'Domain Admin Toolkit',type:'PowerShell · Active Directory',pt:'Ferramentas de administração para ambientes Windows e domínios.',en:'Administration tools for Windows and domain environments.'}
 ];
 ---
 <!doctype html>
@@ -42,7 +42,7 @@ try { const t=localStorage.getItem('theme');document.documentElement.dataset.the
 <div class="card"><span class="tag">PowerShell</span><h3 data-pt="Automação" data-en="Automation">Automação</h3><p data-pt="Simplificação de tarefas de manutenção e administração Windows." data-en="Simplifying Windows maintenance and administration tasks.">Simplificação de tarefas de manutenção e administração Windows.</p></div>
 <div class="card"><span class="tag">IT</span><h3 data-pt="Ferramentas técnicas" data-en="Technical tools">Ferramentas técnicas</h3><p data-pt="Diagnóstico, organização e gestão de ambientes informáticos." data-en="Diagnostics, organization and management of IT environments.">Diagnóstico, organização e gestão de ambientes informáticos.</p></div>
 </div></section>
-<section id="produtos" class="wrap"><div class="eyebrow">Software</div><h2 data-pt="Produtos em desenvolvimento" data-en="Products in development">Produtos em desenvolvimento</h2><div class="grid">{products.map(p=><article class="card"><span class="tag">{p.type}</span><h3>{p.name}</h3><p data-pt={p.pt} data-en={p.en}>{p.pt}</p><span class="muted" data-pt="Em desenvolvimento · Sem vendas ativas" data-en="In development · Not currently for sale">Em desenvolvimento · Sem vendas ativas</span></article>)}</div></section>
+<section id="produtos" class="wrap"><div class="eyebrow">Software</div><h2 data-pt="Produtos em desenvolvimento" data-en="Products in development">Produtos em desenvolvimento</h2><div class="grid">{products.map(p=><article class="card"><span class="tag">{p.type}</span><h3>{p.name}</h3><p data-pt={p.pt} data-en={p.en}>{p.pt}</p><span class="muted" data-pt="Em desenvolvimento · Sem vendas ativas" data-en="In development · Not currently for sale">Em desenvolvimento · Sem vendas ativas</span><div style="margin-top:16px"><a href={`/produtos/${p.slug}/`} data-pt="Ver detalhes →" data-en="View details →">Ver detalhes →</a></div></article>)}</div></section>
 <section id="contacto" class="wrap"><div class="eyebrow" data-pt="Contacto" data-en="Contact">Contacto</div><h2 data-pt="Vamos conversar" data-en="Let's connect">Vamos conversar</h2><p class="lead" data-pt="Conhece o meu trabalho e acompanha as atualizações através do GitHub." data-en="Explore my work and follow updates on GitHub.">Conhece o meu trabalho e acompanha as atualizações através do GitHub.</p><a class="btn" href="https://github.com/sacramento-mlp" rel="noopener noreferrer">GitHub ↗</a></section>
 </main>
 <footer><div class="wrap">© {new Date().getFullYear()} Mário Sacramento · <span data-pt="Desenvolvido com Astro" data-en="Built with Astro">Desenvolvido com Astro</span></div></footer>
