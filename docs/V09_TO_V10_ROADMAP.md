@@ -19,7 +19,7 @@
 ## v0.9 — Biblioteca e descoberta
 1. v0.9.1: `sitemap.xml`, `robots.txt`, `rss.xml` e verificações de rotas geradas; estes recursos usam apenas `publishedArticles`.
 2. v0.9.2: **implementada, a aguardar validação do GitHub Actions** — pesquisa bilingue sem acentos, filtros por categoria e estado sem resultados na página `/artigos/`. Sem artigos publicados, mantém-se o estado editorial vazio, sem filtros visíveis. A aprovação editorial é reforçada por `src/data/publication-approvals.json` e verificada no build.
-3. v0.9.3: rever metadados, partilha social, ligações internas e estrutura editorial; testar em Android e desktop. Preparar checklist da passagem para v1.0 sem iniciar essa versão nesta conversa.
+3. v0.9.3: **implementação de metadados e verificações guardada, publicação a confirmar** — canonical, Open Graph e cartões sociais de resumo em todas as páginas, testes de SEO no build, checklist em `docs/V093_SEO_QA.md`. A revisão real em Android/desktop e as medições Lighthouse permanecem pendentes; não declarar v0.9 totalmente aceite sem estes ensaios.
 4. Revisão de publicação e segurança: verificar que um artigo não aprovado não gera URL, RSS nem sitemap. O ficheiro `src/data/articles.ts` contém atualmente um rascunho com `published: false`. **A origem do repositório é pública; este sistema não é adequado para rascunhos confidenciais.**
 
 ## Antes da v1.0
@@ -40,3 +40,9 @@
 - Prompt de continuação para nova conversa no ChatGPT.
 
 Não iniciar a implementação da v1.0 nesta conversa depois da decisão de transição; a nova conversa será usada para essa fase, conforme pedido do utilizador.
+
+## Última intervenção v0.9.3
+- Atualizados os cinco templates Astro com metadados de partilha uniformes.
+- Adicionados testes para canonical e Open Graph nas seis rotas públicas obrigatórias.
+- Não foi criada nova imagem de partilha nem publicado qualquer artigo.
+- Antes de abrir a nova conversa para v1.0, confirmar a execução GitHub Actions posterior a estas alterações e atualizar o commit de referência.
