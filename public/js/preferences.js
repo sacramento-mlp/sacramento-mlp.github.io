@@ -27,6 +27,7 @@
         : (next === 'pt' ? 'Ativar tema claro' : 'Switch to light theme'));
     }
     storage.set('lang', next);
+    document.dispatchEvent(new CustomEvent('site:languagechange', { detail: { lang: next } }));
   }
   function setTheme(theme) {
     const next = theme === 'light' ? 'light' : 'dark';
