@@ -32,6 +32,15 @@ for (const route of requiredRoutes) {
   if (!html.includes('href="#main-content"')) failures.push(`Missing keyboard skip link: ${route}`);
   if (!/<main\b[^>]*\bid="main-content"[^>]*\btabindex="-1"/.test(html)) failures.push(`Missing focusable main content landmark: ${route}`);
   if (!html.includes('data-aria-pt="Navegação principal"')) failures.push(`Missing bilingual main navigation: ${route}`);
+  // Share previews must identify the canonical URL, without inventing image metadata.
+  const canonical = 'https://sacramento-mlp.github.io' + route;
+  if (!html.includes('rel="canonical" href="' + canonical + '"')) failures.push(`Missing canonical URL: ${route}`);
+  if (!html.includes('property="og:url" content="' + canonical + '"')) failures.push(`Missing Open Graph URL: ${route}`);
+  if (!html.includes('property="og:title"')) failures.push(`Missing Open Graph title: ${route}`);
+  if (!html.includes('property="og:description"')) failures.push(`Missing Open Graph description: ${route}`);
+  if (!html.includes('name="twitter:card" content="summary"')) failures.push(`Missing social summary card: ${route}`);
+  if (!html.includes('name="description"')) failures.push(`Missing meta description: ${route}`);
+
 
 }
 for (const asset of requiredAssets) {
