@@ -6,3 +6,8 @@
 .skip-link:focus{transform:translateY(0)}
 #main-content{scroll-margin-top:90px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* A focused main region should not draw a decorative outline after using the skip link. */
+#main-content:focus{outline:none}
+/* Visible, consistent focus on links, controls and interactive cards. */
+:where(a,button,input,select,textarea):focus-visible{outline:3px solid var(--accent);outline-offset:4px}
