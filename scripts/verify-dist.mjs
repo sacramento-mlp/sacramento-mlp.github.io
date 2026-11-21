@@ -48,6 +48,28 @@ for (const route of requiredRoutes) {
     if (!existsSync(routeFile(href))) failures.push(`Broken route link ${route} → ${href}`);
   }
 }
+// Releasing an article requires an explicit editorial approval in source control.
+const approvalFile = resolve('src/data/publication-approvals.json');
+const approvals = existsSync(approvalFile)
+  ? JSON.parse(readFileSync(approvalFile, 'utf8')).approvedSlugs
+  : null;
+if (!Array.isArray(approvals) || approvals.some(slug => typeof slug !== 'string')) {
+  failures.push('Missing or invalid publication-approvals.json');
+}
+const approvedPaths = new Set((Array.isArray(approvals) ? approvals : []).map(slug => '/artigos/' + slug + '/'));
+const listingFile = routeFile('/artigos/');
+if (existsSync(listingFile)) {
+  const listing = readFileSync(listingFile, 'utf8');
+  for (const match of listing.matchAll(/class="article-card"[^>]*href="([^"]+)"/g)) {
+    if (!approvedPaths.has(match[1])) failures.push(`Article listing lacks editorial approval: ${match[1]}`);
+  }
+  if (approvedPaths.size === 0 && listing.includes('id="article-library"')) {
+    failures.push('Search controls should be absent when no article is approved');
+  }
+  for (const slug of approvedPaths) {
+    if (!listing.includes('href="' + slug + '"')) failures.push(`Approved article not listed: ${slug}`);
+  }
+}
 // The sitemap and RSS feed must list real public pages only.
 const origin = 'https://sacramento-mlp.github.io';
 const sitemapFile = join(outDir, 'sitemap.xml');
@@ -73,6 +95,9 @@ if (existsSync(sitemapFile)) {
     }
     const route = new URL(url).pathname;
     if (!existsSync(routeFile(route))) failures.push(`Sitemap URL has no generated page: ${route}`);
+    if (route.startsWith('/artigos/') && route !== '/artigos/' && !approvedPaths.has(route)) {
+      failures.push(`Unapproved sitemap article: ${route}`);
+    }
   }
 }
 if (existsSync(rssFile)) {
@@ -84,7 +109,9 @@ if (existsSync(rssFile)) {
       failures.push(`Unexpected RSS link: ${url}`);
       continue;
     }
-    if (!existsSync(routeFile(new URL(url).pathname))) failures.push(`RSS item has no public article page: ${url}`);
+    const articleRoute = new URL(url).pathname;
+    if (!existsSync(routeFile(articleRoute))) failures.push(`RSS item has no public article page: ${url}`);
+    if (!approvedPaths.has(articleRoute)) failures.push(`Unapproved RSS item: ${url}`);
   }
 }
 if (failures.length) {
