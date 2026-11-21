@@ -20,13 +20,23 @@
       langButton.textContent = next === 'pt' ? 'EN' : 'PT';
       langButton.setAttribute('aria-label', next === 'pt' ? 'Switch language to English' : 'Mudar idioma para português');
     }
+    if (themeButton) {
+      const light = root.dataset.theme === 'light';
+      themeButton.setAttribute('aria-label', light
+        ? (next === 'pt' ? 'Ativar tema escuro' : 'Switch to dark theme')
+        : (next === 'pt' ? 'Ativar tema claro' : 'Switch to light theme'));
+    }
     storage.set('lang', next);
   }
   function setTheme(theme) {
     const next = theme === 'light' ? 'light' : 'dark';
     root.dataset.theme = next;
     if (themeButton) {
-      themeButton.setAttribute('aria-label', next === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      const isPortuguese = root.lang === 'pt';
+      const label = next === 'dark'
+        ? (isPortuguese ? 'Ativar tema claro' : 'Switch to light theme')
+        : (isPortuguese ? 'Ativar tema escuro' : 'Switch to dark theme');
+      themeButton.setAttribute('aria-label', label);
       themeButton.setAttribute('aria-pressed', String(next === 'light'));
     }
     storage.set('theme', next);
