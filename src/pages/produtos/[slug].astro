@@ -22,6 +22,12 @@ const {product}=Astro.props;
 <meta property="og:type" content="website"/>
 <meta property="og:title" content={`${product.name} | Mário Sacramento`}/>
 <meta property="og:description" content={product.descriptionEn}/>
+<meta property="og:url" content={`https://sacramento-mlp.github.io/produtos/${product.slug}/`}/>
+<meta property="og:site_name" content="Mário Sacramento"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content={`${product.name} | Mário Sacramento`}/>
+<meta name="twitter:description" content={product.descriptionEn}/>
 <meta name="theme-color" content="#080f1d"/>
 <link rel="icon" type="image/png" href="/brand/ms-logo.png"/>
 <title>{product.name} | Mário Sacramento</title>
