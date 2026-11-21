@@ -26,9 +26,29 @@ const categoryLabels: Record<string,{en:string;pt:string}> = {
 <section class="articles-hero"><div class="wrap"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="CONHECIMENTO / RECURSOS" data-en="KNOWLEDGE / RESOURCES">KNOWLEDGE / RESOURCES</span></div><h1 data-pt="Artigos & Guias" data-en="Articles & Guides">Articles & Guides</h1><p class="lead" data-pt="Guias práticos, explicações técnicas e recursos para trabalhar melhor com tecnologia." data-en="Practical guides, technical explanations and resources to help you work better with technology.">Practical guides, technical explanations and resources to help you work better with technology.</p></div></section>
 <section class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="BIBLIOTECA" data-en="LIBRARY">LIBRARY</span></div>
 {publishedArticles.length > 0 ?
-<div class="article-grid">{publishedArticles.map(article=><a class="article-card" href={`/artigos/${article.slug}/`}><span class="article-card-category" data-pt={categoryLabels[article.category].pt} data-en={categoryLabels[article.category].en}>{categoryLabels[article.category].en}</span><h2 data-pt={article.title.pt} data-en={article.title.en}>{article.title.en}</h2><p data-pt={article.summary.pt} data-en={article.summary.en}>{article.summary.en}</p><div class="article-card-footer"><span><time datetime={article.date}>{article.date}</time> · {article.readMinutes} min</span><span data-pt="Ler artigo ↗" data-en="Read article ↗">Read article ↗</span></div></a>)}</div>
+<div class="article-library" id="article-library">
+  <div class="article-filters" role="search" aria-label="Search the article library" data-aria-pt="Pesquisar na biblioteca de artigos" data-aria-en="Search the article library">
+    <label class="article-search-label" for="article-search" data-pt="Pesquisar artigos" data-en="Search articles">Search articles</label>
+    <input id="article-search" class="article-search-input" type="search" autocomplete="off" placeholder="Search titles, topics and summaries..." data-placeholder-pt="Pesquisar títulos, temas e resumos..." data-placeholder-en="Search titles, topics and summaries..." />
+    <div class="article-category-filters" role="group" aria-label="Filter by category" data-aria-pt="Filtrar por categoria" data-aria-en="Filter by category">
+      <button class="article-filter" type="button" data-filter="all" aria-pressed="true" data-pt="Todos" data-en="All">All</button>
+      {Object.entries(categoryLabels).map(([key,label])=>
+        <button class="article-filter" type="button" data-filter={key} aria-pressed="false" data-pt={label.pt} data-en={label.en}>{label.en}</button>
+      )}
+    </div>
+    <p class="article-count" id="article-count" role="status" aria-live="polite" aria-atomic="true"></p>
+  </div>
+  <div class="article-grid" id="article-grid">
+    {publishedArticles.map(article=><a class="article-card" href={`/artigos/${article.slug}/`} data-category={article.category} data-search-en={`${article.title.en} ${article.summary.en} ${categoryLabels[article.category].en}`} data-search-pt={`${article.title.pt} ${article.summary.pt} ${categoryLabels[article.category].pt}`}><span class="article-card-category" data-pt={categoryLabels[article.category].pt} data-en={categoryLabels[article.category].en}>{categoryLabels[article.category].en}</span><h2 data-pt={article.title.pt} data-en={article.title.en}>{article.title.en}</h2><p data-pt={article.summary.pt} data-en={article.summary.en}>{article.summary.en}</p><div class="article-card-footer"><span><time datetime={article.date}>{article.date}</time> · {article.readMinutes} min</span><span data-pt="Ler artigo ↗" data-en="Read article ↗">Read article ↗</span></div></a>)}
+  </div>
+  <div class="articles-no-results" id="articles-no-results" hidden>
+    <p data-pt="Não foram encontrados artigos com estes critérios." data-en="No articles match your search.">No articles match your search.</p>
+    <button class="article-reset" type="button" id="article-reset" data-pt="Limpar filtros" data-en="Clear filters">Clear filters</button>
+  </div>
+</div>
 :<div class="articles-empty"><span class="articles-empty-icon" aria-hidden="true">✦</span><h2 data-pt="Os primeiros artigos estão a ser preparados." data-en="The first articles are being prepared.">The first articles are being prepared.</h2><p class="muted" data-pt="Estamos a preparar conteúdos úteis sobre Windows, PowerShell, segurança e desenvolvimento. Os artigos serão publicados depois de revistos." data-en="Useful content about Windows, PowerShell, security and development is in preparation. Articles will be published after review.">Useful content about Windows, PowerShell, security and development is in preparation. Articles will be published after review.</p><a class="btn secondary" href="/" data-pt="Explorar o portfólio" data-en="Explore the portfolio">Explore the portfolio</a></div>}
 </section>
 </main><SiteFooter />
 <script is:inline src="/js/preferences.js" defer></script>
+{publishedArticles.length > 0 && <script is:inline src="/js/articles-filter.js" defer></script>}
 </body></html>
