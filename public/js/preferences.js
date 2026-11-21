@@ -18,7 +18,7 @@
     });
     if (langButton) {
       langButton.textContent = next === 'pt' ? 'EN' : 'PT';
-      langButton.setAttribute('aria-label', next === 'pt' ? 'Switch language to English' : 'Mudar idioma para português');
+      langButton.setAttribute('aria-label', next === 'pt' ? 'Mudar idioma para inglês' : 'Switch language to Portuguese');
     }
     if (themeButton) {
       const light = root.dataset.theme === 'light';
