@@ -30,7 +30,7 @@ for (const route of requiredRoutes) {
   if (!html.includes('/js/preferences.js')) failures.push(`Missing preferences script: ${route}`);
   if (!html.includes('ms-logo.png')) failures.push(`Missing brand reference: ${route}`);
   if (!html.includes('href="#main-content"')) failures.push(`Missing keyboard skip link: ${route}`);
-  if (!html.includes('id="main-content"')) failures.push(`Missing main content landmark: ${route}`);
+  if (!/<main\b[^>]*\bid="main-content"[^>]*\btabindex="-1"/.test(html)) failures.push(`Missing focusable main content landmark: ${route}`);
   if (!html.includes('data-aria-pt="Navegação principal"')) failures.push(`Missing bilingual main navigation: ${route}`);
 
 }
