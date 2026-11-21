@@ -6,11 +6,14 @@ const selectors = {
   light: /html\[data-theme=light\]\s*\{([^}]*)\}/
 };
 const parseTokens = (body) => Object.fromEntries(
-  [...body.matchAll(/--([a-z-]+):\s*(#[0-9a-fA-F]{6})/g)].map((m) => [m[1], m[2]])
+  [...body.matchAll(/--([a-z-]+):\s*(#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?)(?![0-9a-fA-F])/g)].map((m) => [m[1], m[2]])
 );
 function luminance(hex) {
+  const normalized = hex.length === 4
+    ? '#' + [...hex.slice(1)].map((digit) => digit + digit).join('')
+    : hex;
   const rgb = [1, 3, 5].map((offset) => {
-    const channel = parseInt(hex.slice(offset, offset + 2), 16) / 255;
+    const channel = parseInt(normalized.slice(offset, offset + 2), 16) / 255;
     return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
   });
   return rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722;
