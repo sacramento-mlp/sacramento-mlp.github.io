@@ -1,3 +1,5 @@
+import publicationApprovals from './publication-approvals.json';
+
 export type Article = {
   slug: string;
   date: string;
@@ -47,4 +49,5 @@ export const articles: Article[] = [
     ]
   }
 ];
-export const publishedArticles = articles.filter(article => article.published);
+const approvedSlugs = new Set(publicationApprovals.approvedSlugs);
+export const publishedArticles = articles.filter(article => article.published && approvedSlugs.has(article.slug));
