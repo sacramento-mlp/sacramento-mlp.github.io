@@ -69,3 +69,38 @@ test('preferences remain usable when local storage is unavailable', () => {
   assert.equal(app.root.lang, 'pt');
   assert.equal(app.root.dataset.theme, 'light');
 });
+
+test('shared navigation preserves the six public destinations', () => {
+  const header = read('src/components/SiteHeader.astro');
+  const home = read('src/pages/index.astro');
+  const cv = read('src/pages/cv.astro');
+  const products = read('src/pages/produtos/[slug].astro');
+  assert.match(header, /href:\s*'\/cv\/'/);
+  assert.match(header, /href:\s*'\/artigos\/'/);
+  assert.match(header, /'#sobre'/);
+  assert.match(header, /'#produtos'/);
+  assert.match(header, /'#contacto'/);
+  assert.match(home, /slug:'diskguardian'/);
+  assert.match(home, /slug:'windows-technical-toolkit'/);
+  assert.match(home, /slug:'domain-admin-toolkit'/);
+  assert.match(cv, /<SiteHeader\s+current="cv"/);
+  assert.match(products, /SiteHeader/);
+});
+
+test('public page templates retain keyboard skip links and a focusable main region', () => {
+  for (const path of ['src/pages/index.astro', 'src/pages/cv.astro', 'src/pages/artigos/index.astro', 'src/pages/artigos/[slug].astro']) {
+    const page = read(path);
+    assert.match(page, /class="skip-link"\s+href="#main-content"/, path);
+    assert.match(page, /<main\s+id="main-content"\s+tabindex="-1"/, path);
+    assert.match(page, /<SiteHeader/, path);
+    assert.match(page, /<SiteFooter/, path);
+  }
+});
+
+test('production deployment remains restricted to main', () => {
+  const workflow = read('.github/workflows/deploy.yml');
+  assert.match(workflow, /branches:\s*\[main\]/);
+  assert.match(workflow, /npm test/);
+  assert.match(workflow, /npm run check/);
+  assert.doesNotMatch(workflow, /branches:\s*\[[^\]]*develop/);
+});
