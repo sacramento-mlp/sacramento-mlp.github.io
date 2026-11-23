@@ -23,6 +23,8 @@ jobs:
         run: npm install
       - name: Verify theme contrast
         run: npm run verify:contrast
+      - name: Run regression tests
+        run: npm test
       - name: Check Astro and TypeScript
         run: npm run check
       - name: Build Astro site
