@@ -15,17 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
       - name: Install dependencies
-        run: |
-          if test -f package-lock.json; then
-            npm ci
-          else
-            npm install
-          fi
+        run: npm ci
       - name: Regression tests
         run: npm test
       - name: Astro and TypeScript checks
@@ -37,7 +32,7 @@ jobs:
       - name: Verify distribution
         run: npm run verify:dist
       - name: Retain generated lockfile and build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: validation-output
           path: |
