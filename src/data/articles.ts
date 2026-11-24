@@ -49,5 +49,5 @@ export const articles: Article[] = [
     ]
   }
 ];
-const approvedSlugs = new Set(publicationApprovals.approvedSlugs);
+const approvedSlugs = new Set<string>(publicationApprovals.approvedSlugs);
 export const publishedArticles = articles.filter(article => article.published && approvedSlugs.has(article.slug));
