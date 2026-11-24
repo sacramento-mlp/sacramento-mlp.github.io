@@ -1,0 +1,37 @@
+/* v1.0 professional layout: theme-aware, restrained typography and responsive content. */
+.hero-shell .hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);min-height:0;gap:clamp(24px,5vw,64px);padding-block:clamp(48px,7vw,88px)}
+.hero-shell .hero h1,.cv-page .cv-hero h1{font-size:clamp(2rem,4vw,3.5rem);line-height:1.13;letter-spacing:-.04em;overflow-wrap:break-word}
+.hero-shell .hero-name{font-size:1rem;line-height:1.5}
+.hero-shell .hero-meta{margin-top:28px}
+.professional-card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,32px)}
+.professional-card .section-kicker{margin-bottom:18px}
+.career-current{font-size:1.25rem;line-height:1.4;font-weight:750;margin:0 0 8px}
+.career-facts{margin:24px 0 8px}
+.career-facts>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid var(--line);padding:12px 0}
+.career-facts dt{font-size:.85rem;color:var(--muted)}
+.career-facts dd{margin:0;text-align:right;font-weight:750;flex-shrink:0}
+.section-space{padding-block:clamp(40px,6vw,78px)}
+.section-kicker{margin-bottom:20px}
+.contact-inner>div{min-width:0}
+.contact-inner a[href^="mailto:"]{overflow-wrap:anywhere}
+.cv-page .cv-hero-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,5vw,60px)}
+.cv-page .cv-identity{min-height:220px}
+.cv-jump{display:flex;flex-wrap:wrap;gap:10px;padding-block:18px;border-bottom:1px solid var(--line)}
+.cv-jump a{display:inline-flex;align-items:center;min-height:44px;padding:6px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);text-decoration:none;font-weight:650;font-size:.9rem}
+.career-timeline{list-style:none;margin:28px 0 0;padding:0 0 0 22px;border-left:2px solid var(--line);display:grid;gap:16px}
+.career-entry{position:relative;padding:clamp(18px,3vw,28px);border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+.career-entry::before{content:"";position:absolute;left:-30px;top:27px;width:12px;height:12px;background:var(--accent);border:2px solid var(--bg);border-radius:50%}
+.career-entry h3{font-size:1.15rem;line-height:1.4;margin:6px 0}
+.career-entry p{margin:6px 0;overflow-wrap:break-word}
+.career-entry p:last-child{color:var(--muted);max-width:80ch}
+.cv-page .education-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:30px}
+.cv-page .education-grid .cv-skill{min-height:0}
+.training-details{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px 18px}
+.training-details summary{cursor:pointer;min-height:44px;padding-block:10px;font-weight:700;color:var(--accent)}
+.training-details summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.training-list{padding-left:20px;margin:0 0 12px}
+.training-list li{padding-block:8px;border-bottom:1px solid var(--line);overflow-wrap:break-word}
+.training-list li:last-child{border-bottom:0}
+@media(max-width:950px){.hero-shell .hero-grid{grid-template-columns:1fr}.cv-page .cv-hero-grid{grid-template-columns:1fr}.cv-page .cv-identity{display:none}}
+@media(max-width:760px){.hero-shell .hero-grid{gap:28px}.hero-shell .hero h1,.cv-page .cv-hero h1{font-size:clamp(1.95rem,7vw,2.8rem)}.cv-page .education-grid{grid-template-columns:1fr}.top .navlinks>a,.top .switch{min-height:44px}.top .brand-name{white-space:normal}.career-timeline{padding-left:15px}.career-entry::before{left:-23px}.cv-page .cv-hero{padding-block:42px}.contact-inner .actions{margin-top:0}}
+@media(max-width:360px){.hero-shell .hero .actions .btn{flex-basis:100%}.career-facts>div{flex-wrap:wrap}.career-facts dd{text-align:left}}
