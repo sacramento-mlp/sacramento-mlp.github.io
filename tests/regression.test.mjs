@@ -117,3 +117,11 @@ test('production deployment remains restricted to main', () => {
     assert.doesNotMatch(page, /sacramento\.mlp\.it@gmail\.com/, path);
   }
 });
+
+ test('contact sections share the responsive side-by-side layout', () => {
+  for (const path of ['src/pages/index.astro', 'src/pages/cv.astro']) {
+    const page = read(path);
+    assert.match(page, /class="contact-section"><div class="wrap contact-inner"><div>/, path);
+    assert.match(page, /<\/p><\/div><ContactPanel\s*\/><\/div><\/section>/, path);
+  }
+});
