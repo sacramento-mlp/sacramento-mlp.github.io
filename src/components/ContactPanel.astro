@@ -1,0 +1,52 @@
+---
+const email = 'sacramento.mlp.it@gmail.com';
+---
+<div class="contact-panel" data-contact-panel>
+  <div class="contact-email">
+    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+    <div class="contact-address">
+      <span class="muted" data-pt="E-mail profissional" data-en="Professional email">Professional email</span>
+      <a href={`mailto:${email}`} data-email-address>{email}</a>
+    </div>
+    <button type="button" class="switch contact-copy" data-copy-email hidden data-aria-pt="Copiar e-mail" data-aria-en="Copy email" aria-label="Copy email"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button>
+  </div>
+  <span class="contact-feedback" role="status" aria-live="polite"></span>
+  <div class="actions contact-actions">
+    <a class="btn" href={`mailto:${email}`}><span data-pt="Enviar e-mail" data-en="Send email">Send email</span><span aria-hidden="true">↗</span></a>
+    <a class="btn secondary" href="https://github.com/sacramento-mlp" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+  </div>
+</div>
+<script>
+  for (const panel of document.querySelectorAll<HTMLElement>('[data-contact-panel]')) {
+    const button = panel.querySelector<HTMLButtonElement>('[data-copy-email]');
+    const address = panel.querySelector<HTMLElement>('[data-email-address]');
+    const feedback = panel.querySelector<HTMLElement>('.contact-feedback');
+    if (!button || !address || !feedback || !navigator.clipboard?.writeText) continue;
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      const pt = document.documentElement.lang === 'pt';
+      try {
+        await navigator.clipboard.writeText(address.textContent?.trim() ?? '');
+        feedback.textContent = pt ? 'E-mail copiado.' : 'Email copied.';
+      } catch {
+        feedback.textContent = pt ? 'Não foi possível copiar. Seleciona o endereço manualmente.' : 'Could not copy. Select the address manually.';
+      }
+    });
+    document.addEventListener('site:languagechange', () => { feedback.textContent = ''; });
+  }
+</script>
+<style>
+.contact-panel{width:min(100%,34rem);min-width:0;display:grid;gap:12px}
+.contact-email{display:flex;align-items:center;gap:12px;padding:18px;border:1px solid var(--line);background:var(--panel);border-radius:14px}
+.contact-email>svg{flex-shrink:0;color:var(--accent)}
+.contact-address{display:grid;gap:4px;min-width:0;flex:1}
+.contact-address .muted{font-size:.8rem}
+.contact-address a{color:var(--text);font-weight:650;overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:3px}
+.contact-copy{min-width:44px;min-height:44px;align-items:center;justify-content:center;color:var(--text)}
+.contact-copy:not([hidden]){display:inline-flex}
+.contact-feedback:empty{display:none}
+.contact-feedback{color:var(--muted);font-size:.85rem}
+.contact-panel .contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin:0}
+.contact-actions .btn{flex:1 1 130px;text-align:center;justify-content:center;min-height:44px}
+@media(max-width:400px){.contact-email{padding:12px;gap:8px}.contact-email>svg{width:20px}.contact-address a{font-size:.85rem}}
+</style>

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+- Shared contact panel on homepage and résumé, with visible professional email, accessible copy action, mailto and GitHub links.
+- Responsive layout and bilingual clipboard feedback.
+- Regression checks for contact consistency.
+
 ## 1.0.0 — Release candidate
 
 - Professional homepage and bilingual résumé with career history, education and training.
