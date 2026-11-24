@@ -14,15 +14,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
       - uses: actions/configure-pages@v5
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Verify theme contrast
         run: npm run verify:contrast
+      - name: Run regression tests
+        run: npm test
+      - name: Check Astro and TypeScript
+        run: npm run check
       - name: Build Astro site
         run: npm run build
       - name: Verify published routes and assets
@@ -31,6 +35,7 @@ jobs:
         with:
           path: dist
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
