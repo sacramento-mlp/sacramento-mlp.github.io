@@ -104,3 +104,16 @@ test('production deployment remains restricted to main', () => {
   assert.match(workflow, /npm run check/);
   assert.doesNotMatch(workflow, /branches:\s*\[[^\]]*develop/);
 });
+
+ test('homepage and résumé share the visible professional email panel', () => {
+  const panel = read('src/components/ContactPanel.astro');
+  assert.match(panel, /sacramento\.mlp\.it@gmail\.com/);
+  assert.match(panel, /data-email-address/);
+  assert.match(panel, /data-copy-email/);
+  assert.match(panel, /navigator\.clipboard\.writeText/);
+  for (const path of ['src/pages/index.astro', 'src/pages/cv.astro']) {
+    const page = read(path);
+    assert.match(page, /<ContactPanel\s*\/>/, path);
+    assert.doesNotMatch(page, /sacramento\.mlp\.it@gmail\.com/, path);
+  }
+});
