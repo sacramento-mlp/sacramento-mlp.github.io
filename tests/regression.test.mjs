@@ -9,7 +9,7 @@ test('editorial selection requires publication flag AND explicit approval', () =
   const source = read('src/data/articles.ts');
   const approvals = JSON.parse(read('src/data/publication-approvals.json'));
   assert.ok(Array.isArray(approvals.approvedSlugs));
-  assert.match(source, /new Set\(publicationApprovals\.approvedSlugs\)/);
+  assert.match(source, /new Set(?:<string>)?\(publicationApprovals\.approvedSlugs\)/);
   assert.match(source, /article\.published\s*&&\s*approvedSlugs\.has\(article\.slug\)/);
 });
 
