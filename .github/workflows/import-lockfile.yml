@@ -1,0 +1,41 @@
+name: Import verified v1.0 lockfile
+on:
+  push:
+    branches: ['develop/v1.0']
+    paths: ['.github/workflows/import-lockfile.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  import:
+    if: github.ref == 'refs/heads/develop/v1.0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Recover exact validated artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test ! -e package-lock.json
+          gh api repos/${{ github.repository }}/actions/artifacts/14886281438/zip > "$RUNNER_TEMP/validation.zip"
+          echo "d958ed8910a569912323e51ffdac1d561d0591212f23a8da66df43daba9d6f8b  $RUNNER_TEMP/validation.zip" | sha256sum -c -
+          unzip -p "$RUNNER_TEMP/validation.zip" package-lock.json > package-lock.json
+          node -e 'const a=require("./package.json"),b=require("./package-lock.json").packages[""]; for(const k of ["name","version","dependencies","devDependencies"]) require("node:assert/strict").deepEqual(a[k],b[k])'
+      - run: npm ci
+      - run: npm test
+      - run: npm run check
+      - run: npm run verify:contrast
+      - run: npm run build
+      - run: npm run verify:dist
+      - name: Commit only verified lockfile
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- package-lock.json
+          git commit -m "build: integrate validated npm lockfile"
+          git push origin HEAD:refs/heads/develop/v1.0
