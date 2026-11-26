@@ -1,14 +1,16 @@
+import inboxZero from './inbox-zero-outlook.json';
 import publicationApprovals from './publication-approvals.json';
 
 export type Article = {
   slug: string;
   date: string;
-  category: 'windows' | 'powershell' | 'security' | 'development';
+  category: 'windows' | 'powershell' | 'security' | 'development' | 'productivity';
   readMinutes: number;
   published: boolean;
   title: { en: string; pt: string };
   summary: { en: string; pt: string };
-  sections: { heading: { en: string; pt: string }; paragraphs: { en: string; pt: string }[] }[];
+  sections: { heading: { en: string; pt: string }; paragraphs: { en: string; pt: string }[]; table?: { headers: { en: string; pt: string }[]; rows: { en: string; pt: string }[][] } }[];
+  sources?: { label: { en: string; pt: string }; url: string }[];
 };
 
 /**
@@ -17,6 +19,7 @@ export type Article = {
  * Never include unreviewed claims, private data or untested commands.
  */
 export const articles: Article[] = [
+  { ...inboxZero, category: 'productivity' },
   {
     slug: 'check-windows-storage-safely',
     date: '2026-11-20',
