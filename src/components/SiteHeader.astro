@@ -1,9 +1,9 @@
 ---
-import { locale, localPath, englishPath } from '../lib/locale';
+import { locale, localPath, englishPath, pagePath } from '../lib/locale';
 const lang=locale(Astro.url.pathname);
 const link=(path: string)=>localPath(path,lang);
 const other=lang==='pt'?'en':'pt';
-const alternate=localPath(englishPath(Astro.url.pathname),other);
+const alternate=localPath(pagePath(englishPath(Astro.url.pathname)),other);
 interface Props {
   current?: 'home' | 'cv' | 'products' | 'articles';
 }
