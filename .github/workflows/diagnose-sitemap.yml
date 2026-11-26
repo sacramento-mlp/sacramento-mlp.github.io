@@ -1,0 +1,51 @@
+name: Diagnose public sitemap
+on:
+  pull_request:
+    branches: [main]
+    paths: ['.github/workflows/diagnose-sitemap.yml']
+permissions:
+  contents: read
+jobs:
+  public-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Fetch public sitemap, robots and localized page
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import urllib.request, urllib.error, xml.etree.ElementTree as ET
+          origin='https://sacramento-mlp.github.io'
+          ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','x':'http://www.w3.org/1999/xhtml'}
+          def fetch(path, agent='Mozilla/5.0'):
+              req=urllib.request.Request(origin+path,headers={'User-Agent':agent,'Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req,timeout=15) as r:
+                  data=r.read()
+                  print('HTTP',r.status,'URL',r.url,'TYPE',r.headers.get('Content-Type'),'BYTES',len(data),'LAST-MODIFIED',r.headers.get('Last-Modified'),flush=True)
+                  return data
+          errors=[]
+          for agent in ['Mozilla/5.0','Googlebot']:
+              try:
+                  root=ET.fromstring(fetch('/sitemap.xml',agent))
+                  assert root.tag=='{'+ns['s']+'}urlset'
+                  urls=root.findall('s:url',ns)
+                  print('AGENT',agent,'URL COUNT',len(urls),flush=True)
+                  for item in urls:
+                      print('LOC',item.findtext('s:loc',namespaces=ns),'ALTERNATES',len(item.findall('x:link',ns)),flush=True)
+                  assert len(urls)==14
+                  assert all(len(item.findall('x:link',ns))==3 for item in urls)
+              except Exception as e:
+                  errors.append(str(e)); print('ERROR',repr(e),flush=True)
+          for path in ['/robots.txt','/pt/','/googleeada5c9a53174ceb.html']:
+              try:
+                  data=fetch(path)
+                  if path=='/robots.txt':
+                      print(data.decode(),flush=True)
+                      assert 'Sitemap: '+origin+'/sitemap.xml' in data.decode()
+                  elif path=='/pt/': assert b'lang="pt-PT"' in data
+                  else: assert data.strip()==b'google-site-verification: googleeada5c9a53174ceb.html'
+              except Exception as e:
+                  errors.append(str(e));print('ERROR',repr(e),flush=True)
+          if errors: raise SystemExit('Public checks failed: '+str(errors))
+          print('Public sitemap checks passed.')
+          PY
