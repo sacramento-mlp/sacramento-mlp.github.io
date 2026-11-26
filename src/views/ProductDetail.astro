@@ -8,6 +8,8 @@ import SeoHead from '../components/SeoHead.astro';
 import { locale, localPath, languageTag } from '../lib/locale';
 const lang=locale(Astro.url.pathname);
 const link=(path: string)=>localPath(path,lang);
+const productTypesPt: Record<string,string> = {'DESKTOP SOFTWARE':'SOFTWARE PARA COMPUTADOR','TECHNICAL UTILITIES':'UTILITÁRIOS TÉCNICOS','ADMINISTRATION UTILITIES':'UTILITÁRIOS DE ADMINISTRAÇÃO'};
+const productType = lang==='pt' ? productTypesPt[product.type] ?? product.type : product.type;
 ---
 <!doctype html><html lang={languageTag(lang)} data-theme="dark"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -22,7 +24,7 @@ const link=(path: string)=>localPath(path,lang);
 <section class="product-hero"><div class="wrap">
 <a class="back-link" href={link("/#produtos")}><span aria-hidden="true">←</span> <span data-pt="Voltar aos produtos" data-en="Back to products">{lang==='pt'?("Voltar aos produtos"):("Back to products")}</span></a>
 <div class="product-hero-grid"><div class="product-hero-copy">
-<div class="section-kicker"><span class="kicker-line"></span><span>{product.index} / 03 — {lang==='pt'?({'DESKTOP SOFTWARE':'SOFTWARE PARA COMPUTADOR','TECHNICAL UTILITIES':'UTILITÁRIOS TÉCNICOS','ADMINISTRATION UTILITIES':'UTILITÁRIOS DE ADMINISTRAÇÃO'} as Record<string,string>)[product.type]:product.type}</span></div>
+<div class="section-kicker"><span class="kicker-line"></span><span>{product.index} / 03 — {productType}</span></div>
 <h1>{product.name}</h1>
 <p class="product-subtitle" data-pt={product.pt} data-en={product.en}>{lang==='pt'?(product.pt):(product.en)}</p>
 <p class="lead" data-pt={product.descriptionPt} data-en={product.descriptionEn}>{lang==='pt'?(product.descriptionPt):(product.descriptionEn)}</p>
