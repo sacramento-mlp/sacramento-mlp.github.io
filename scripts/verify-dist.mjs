@@ -137,7 +137,10 @@ if (existsSync(rssFile)) {
 // Verify localized documents independently of JavaScript and stored preferences.
 const englishRoutes = [...requiredRoutes, ...approvedPaths];
 const allRoutes = new Set(englishRoutes.flatMap(route => [route, '/pt' + route]));
-const decodeHtml = value => value.replace(/&(?:amp|quot|apos|lt|gt|#39|#x27|#34);/g, entity => ({'&amp;':'&','&quot;':'"','&apos;':"'",'&lt;':'<','&gt;':'>','&#39;':"'",'&#x27;':"'",'&#34;':'"'})[entity]);
+const decodeHtml = value => value.replace(/&(?:#(\d+)|#x([0-9a-f]+)|(amp|quot|apos|lt|gt|nbsp));/gi, (entity, decimal, hex, named) => {
+  if(decimal || hex) {const point=Number.parseInt(decimal||hex,decimal?10:16);return point<=0x10ffff?String.fromCodePoint(point):entity;}
+  return ({amp:'&',quot:'"',apos:"'",lt:'<',gt:'>',nbsp:'\u00a0'})[named.toLowerCase()]??entity;
+});
 for (const base of englishRoutes) {
   const en = origin + base, pt = origin + '/pt' + base;
   for (const [route,lang,canonical,alternate] of [[base,'en',en,'/pt'+base],['/pt'+base,'pt-PT',pt,base]]) {
