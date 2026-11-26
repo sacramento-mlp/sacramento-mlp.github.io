@@ -1,0 +1,392 @@
+{
+  "slug": "inbox-zero-outlook",
+  "date": "2026-11-26",
+  "category": "productivity",
+  "readMinutes": 8,
+  "published": true,
+  "title": {
+    "pt": "Inbox Zero no Outlook: transforma o e-mail num sistema de produtividade",
+    "en": "Inbox Zero in Outlook: turn email into a productivity system"
+  },
+  "summary": {
+    "pt": "Um guia prático para organizar a caixa de entrada, automatizar a triagem e acompanhar tarefas com categorias, pastas de pesquisa e Passos Rápidos — sem perder mensagens importantes.",
+    "en": "A practical guide to organising your inbox, automating triage and tracking tasks with categories, Search Folders and Quick Steps — without losing important messages."
+  },
+  "sections": [
+    {
+      "heading": {
+        "pt": "1. Inbox Zero: o objetivo não é uma caixa vazia",
+        "en": "1. Inbox Zero: the goal is not an empty inbox"
+      },
+      "paragraphs": [
+        {
+          "pt": "A caixa de entrada é um ponto de receção, não uma lista de tarefas. Quando mensagens lidas, pedidos pendentes e notificações ficam misturados, torna-se difícil saber o que merece atenção. A metodologia Inbox Zero, popularizada por Merlin Mann, propõe reduzir a atenção que o e-mail consome, em vez de perseguir permanentemente o número zero.",
+          "en": "Your inbox is a reception point, not a task list. When read messages, outstanding requests and notifications are mixed together, it becomes difficult to know what deserves attention. Inbox Zero, popularised by Merlin Mann, aims to reduce the attention email consumes rather than constantly chasing the number zero."
+        },
+        {
+          "pt": "O objetivo é tomar uma decisão sobre cada mensagem: responder, acompanhar, aguardar, ler mais tarde ou arquivar. Uma lista de pendências explícita reduz a necessidade de reler mensagens e facilita a concentração. Não garante menos trabalho, mas torna-o mais visível.",
+          "en": "The aim is to make a decision about each message: reply, follow up, wait, read later or archive. An explicit list of outstanding items reduces repeated reading and makes it easier to focus. It does not guarantee less work, but makes that work more visible."
+        },
+        {
+          "pt": "Este guia destina-se ao Outlook clássico para Windows, preferencialmente numa versão ainda suportada, com uma conta Microsoft 365 ou Exchange. Os nomes dos comandos variam com o idioma, a versão e a configuração da conta. Começa por testar o método com mensagens sem importância.",
+          "en": "This guide targets classic Outlook for Windows, preferably a supported version, with a Microsoft 365 or Exchange account. Command names vary by language, version and account configuration. Start by testing the method with non-critical messages."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "pt": "2. A arquitetura: uma pasta, três categorias e três pastas de pesquisa",
+        "en": "2. The architecture: one folder, three categories and three Search Folders"
+      },
+      "paragraphs": [
+        {
+          "pt": "Utiliza a pasta Arquivo (Archive) da própria caixa de correio para guardar mensagens já triadas. Mantém os Itens Enviados como histórico de envio. O arquivo não elimina a mensagem nem liberta necessariamente espaço na caixa de correio. A organização por estado permite manter ações visíveis sem acumular mensagens na Caixa de Entrada.",
+          "en": "Use the mailbox's Archive folder to store messages that have already been triaged. Keep Sent Items as your sending history. Archiving does not delete a message or necessarily free mailbox space. Organising by status keeps actions visible without accumulating messages in the Inbox."
+        },
+        {
+          "pt": "Em Base > Categorizar > Todas as categorias (Home > Categorize > All Categories), cria as três categorias seguintes. Mantém os nomes em inglês se pretenderes seguir os exemplos tal como estão; as cores são sugestões. Utiliza apenas uma categoria de estado por mensagem, preservando outras categorias de projeto quando necessário.",
+          "en": "Under Home > Categorize > All Categories, create the following three categories. Keep their English names if you want to follow the examples exactly; the colours are suggestions. Use only one status category per message, preserving any other project categories when necessary."
+        },
+        {
+          "pt": "As Pastas de Pesquisa são vistas virtuais: apresentam mensagens que correspondem a critérios sem criar cópias. No Outlook clássico, seleciona Pasta > Nova Pasta de Pesquisa (Folder > New Search Folder) ou utiliza o menu de contexto de Pastas de Pesquisa. Escolhe uma pasta personalizada, atribui-lhe o nome e, em Critérios > Mais Opções > Categorias, seleciona o estado correspondente.",
+          "en": "Search Folders are virtual views: they show messages matching criteria without creating copies. In classic Outlook, choose Folder > New Search Folder or use the Search Folders context menu. Choose a custom folder, name it and select the corresponding status under Criteria > More Choices > Categories."
+        },
+        {
+          "pt": "Cria 01 – Follow Up, 02 – Waiting e 03 – Read Through. Em Procurar (Browse), confirma que a pesquisa abrange as pastas necessárias, incluindo Arquivo e Itens Enviados, na mesma caixa de correio. Adiciona cada pasta aos Favoritos. Nas propriedades de cada pasta, escolhe mostrar o número total de itens, quando disponível, para que mensagens já lidas também sejam contabilizadas.",
+          "en": "Create 01 – Follow Up, 02 – Waiting and 03 – Read Through. Under Browse, check that the search covers the required folders, including Archive and Sent Items, within the same mailbox. Add each folder to Favorites. In each folder's properties, select the total item count, when available, so that messages already read are also counted."
+        },
+        {
+          "pt": "Teste: categoriza uma mensagem de exemplo, arquiva-a e confirma que aparece na vista correta mesmo depois de lida. Retira a categoria e confirma que deixa de aparecer sem perderes a mensagem. Repete o teste com uma mensagem enviada.",
+          "en": "Test: categorise a sample message, archive it and confirm it appears in the correct view even after being read. Remove the category and check that it disappears from the view without losing the message. Repeat the test with a sent message."
+        }
+      ],
+      "table": {
+        "headers": [
+          {
+            "pt": "Categoria",
+            "en": "Category"
+          },
+          {
+            "pt": "Cor sugerida",
+            "en": "Suggested colour"
+          },
+          {
+            "pt": "Finalidade",
+            "en": "Purpose"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "pt": "Follow Up",
+              "en": "Follow Up"
+            },
+            {
+              "pt": "Vermelho / laranja",
+              "en": "Red / orange"
+            },
+            {
+              "pt": "Ação que depende de ti.",
+              "en": "Action that depends on you."
+            }
+          ],
+          [
+            {
+              "pt": "Waiting",
+              "en": "Waiting"
+            },
+            {
+              "pt": "Amarelo / azul",
+              "en": "Yellow / blue"
+            },
+            {
+              "pt": "Pedido a aguardar resposta.",
+              "en": "Request awaiting a reply."
+            }
+          ],
+          [
+            {
+              "pt": "Read Through",
+              "en": "Read Through"
+            },
+            {
+              "pt": "Verde / cinzento",
+              "en": "Green / grey"
+            },
+            {
+              "pt": "Leitura posterior.",
+              "en": "Reading for later."
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": {
+        "pt": "3. Automatizar a triagem com Passos Rápidos",
+        "en": "3. Automate triage with Quick Steps"
+      },
+      "paragraphs": [
+        {
+          "pt": "Em Base > Passos Rápidos > Criar Novo (Home > Quick Steps > Create New), configura os quatro fluxos indicados abaixo. Os atalhos atribuíveis encontram-se no intervalo Ctrl + Shift + 5 a 9; propomos utilizar 5 a 8. Confirma a disponibilidade das ações e dos atalhos na tua instalação.",
+          "en": "Under Home > Quick Steps > Create New, configure the four workflows shown below. Assignable shortcuts are in the Ctrl + Shift + 5 to 9 range; we suggest using 5 to 8. Check that the actions and shortcuts are available in your installation."
+        },
+        {
+          "pt": "Antes de mudar uma mensagem de estado, remove manualmente a categoria anterior, se existir. Não uses indiscriminadamente a opção Limpar categorias quando tens etiquetas de projeto ou outras classificações que precisas de conservar. A conclusão de uma tarefa e a marcação de uma mensagem como lida são ações distintas.",
+          "en": "Before changing a message's status, manually remove its previous status category, if present. Do not indiscriminately use Clear Categories when you have project labels or other classifications you need to preserve. Completing a task and marking a message as read are different actions."
+        },
+        {
+          "pt": "O passo Complete pode limpar todas as categorias apenas se estas forem utilizadas exclusivamente para os três estados deste sistema. Caso contrário, retira somente a categoria de estado manualmente. Se a mensagem tiver um sinalizador de seguimento, marca-o como concluído. Arquiva apenas se ainda estiver na Caixa de Entrada; mantém mensagens enviadas nos Itens Enviados.",
+          "en": "The Complete step can clear all categories only if they are used exclusively for this system's three statuses. Otherwise, manually remove only the status category. If the message has a follow-up flag, mark it complete. Archive only if it is still in the Inbox; keep sent messages in Sent Items."
+        },
+        {
+          "pt": "Os Passos Rápidos podem executar várias ações de uma só vez e nem sempre podem ser anulados. Testa cada fluxo individualmente e confirma que a mensagem fica na pasta e na categoria esperadas. Se um passo estiver indisponível para determinada mensagem, aplica as ações manualmente.",
+          "en": "Quick Steps can perform several actions at once and cannot always be undone. Test each workflow individually and confirm the message ends up in the expected folder and category. If a step is unavailable for a particular message, apply its actions manually."
+        }
+      ],
+      "table": {
+        "headers": [
+          {
+            "pt": "Passo Rápido",
+            "en": "Quick Step"
+          },
+          {
+            "pt": "Ações",
+            "en": "Actions"
+          },
+          {
+            "pt": "Atalho",
+            "en": "Shortcut"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "pt": "Follow Up",
+              "en": "Follow Up"
+            },
+            {
+              "pt": "Categorizar; marcar como lida; mover para Arquivo.",
+              "en": "Categorise; mark as read; move to Archive."
+            },
+            {
+              "pt": "Ctrl + Shift + 5",
+              "en": "Ctrl + Shift + 5"
+            }
+          ],
+          [
+            {
+              "pt": "Waiting",
+              "en": "Waiting"
+            },
+            {
+              "pt": "Categorizar; marcar como lida; arquivar mensagem recebida. Para enviadas, categorizar nos Itens Enviados.",
+              "en": "Categorise; mark as read; archive incoming message. For sent mail, categorise in Sent Items."
+            },
+            {
+              "pt": "Ctrl + Shift + 6",
+              "en": "Ctrl + Shift + 6"
+            }
+          ],
+          [
+            {
+              "pt": "Read Through",
+              "en": "Read Through"
+            },
+            {
+              "pt": "Categorizar; marcar como lida; mover para Arquivo.",
+              "en": "Categorise; mark as read; move to Archive."
+            },
+            {
+              "pt": "Ctrl + Shift + 7",
+              "en": "Ctrl + Shift + 7"
+            }
+          ],
+          [
+            {
+              "pt": "Complete",
+              "en": "Complete"
+            },
+            {
+              "pt": "Remover o estado conforme as precauções descritas; marcar como lida e concluir sinalizador, se aplicável.",
+              "en": "Remove status following the precautions described; mark as read and complete flag, if applicable."
+            },
+            {
+              "pt": "Ctrl + Shift + 8",
+              "en": "Ctrl + Shift + 8"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": {
+        "pt": "4. Regras automáticas: reduzir o ruído sem ocultar trabalho",
+        "en": "4. Automatic rules: reduce noise without hiding work"
+      },
+      "paragraphs": [
+        {
+          "pt": "Em Base > Regras > Gerir Regras e Alertas (Home > Rules > Manage Rules & Alerts), começa por uma regra que apenas atribua a categoria Read Through a boletins de remetentes conhecidos. Revê o resultado durante alguns dias. Só depois considera mover automaticamente essas mensagens para Arquivo. Não uses apenas a palavra unsubscribe ou cancelar subscrição como condição: mensagens legítimas e importantes também podem contê-la.",
+          "en": "Under Home > Rules > Manage Rules & Alerts, begin with a rule that only applies Read Through to newsletters from known senders. Review the results for a few days. Only then consider automatically moving those messages to Archive. Do not rely solely on words such as unsubscribe: legitimate and important messages may contain them too."
+        },
+        {
+          "pt": "Para mensagens em CC, usa a condição correspondente ao teu endereço no campo CC, se disponível, e aplica inicialmente apenas uma categoria. Exclui remetentes prioritários, alertas operacionais e mensagens que exigem resposta. CC não significa ausência de responsabilidade.",
+          "en": "For copied messages, use the condition matching your address in the Cc field, if available, and initially apply only a category. Exclude priority senders, operational alerts and messages requiring a response. Being copied does not mean you have no responsibility."
+        },
+        {
+          "pt": "Para acompanhar pedidos enviados, categoriza manualmente a mensagem nos Itens Enviados como Waiting e define uma data de seguimento, se necessário. Uma regra de saída baseada numa expressão como «aguardo resposta» pode ser útil se a tua versão e conta a suportarem, mas testa-a antes de confiar nela. Certas regras só são executadas enquanto o Outlook clássico está aberto.",
+          "en": "To track outgoing requests, manually categorise the message in Sent Items as Waiting and set a follow-up date if needed. An outgoing rule based on a phrase such as 'awaiting your reply' may be useful if your version and account support it, but test it before relying on it. Some rules run only while classic Outlook is open."
+        },
+        {
+          "pt": "A formatação condicional complementa a triagem. Em Ver > Definições de Vista > Formatação Condicional (View > View Settings > Conditional Formatting), cria um destaque para mensagens em que és o único destinatário no campo Para. Usa negrito e uma cor legível. Aplica a vista a outras pastas de correio, se a opção estiver disponível. O destaque é um auxílio visual, não uma regra de prioridade absoluta.",
+          "en": "Conditional formatting complements triage. Under View > View Settings > Conditional Formatting, highlight messages where you are the sole recipient in the To field. Use bold text and a readable colour. Apply the view to other mail folders if the option is available. The highlight is a visual aid, not an absolute priority rule."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "pt": "5. A rotina diária: decidir, executar e acompanhar",
+        "en": "5. The daily routine: decide, act and follow up"
+      },
+      "paragraphs": [
+        {
+          "pt": "Reserva dois ou três momentos por dia para processar o e-mail, se as responsabilidades profissionais o permitirem. Desativa notificações não essenciais em Ficheiro > Opções > Correio > Chegada de mensagens. Mantém os alertas e os canais de urgência exigidos pelo teu trabalho.",
+          "en": "Set aside two or three periods each day to process email if your professional responsibilities allow it. Disable non-essential alerts under File > Options > Mail > Message arrival. Keep the alerts and urgent communication channels required by your role."
+        },
+        {
+          "pt": "Usa a regra dos dois minutos como orientação, não como obrigação: se uma resposta é rápida e pode ser dada com segurança, resolve-a e arquiva. Se exige concentração, cria uma tarefa Follow Up e atribui-lhe um prazo. Se depende de outra pessoa, regista Waiting na mensagem enviada. Se é apenas leitura útil, coloca-a em Read Through.",
+          "en": "Use the two-minute rule as a guideline, not an obligation: if a reply is quick and can be given safely, handle it and archive it. If it requires focus, create a Follow Up task and give it a deadline. If it depends on someone else, mark the sent message Waiting. If it is simply useful reading, put it in Read Through."
+        },
+        {
+          "pt": "Exemplo: recebes um pedido de relatório que demora 30 minutos. Aplica Follow Up e reserva tempo no calendário. Depois de o enviar, conclui o estado da mensagem original. Se aguardares aprovação, marca a resposta enviada como Waiting e escolhe uma data para voltar a verificar. Quando a aprovação chegar, remove esse estado.",
+          "en": "Example: you receive a request for a report that will take 30 minutes. Apply Follow Up and reserve time in your calendar. After sending it, complete the original message's status. If approval is required, mark your sent reply Waiting and choose a date to check again. When approval arrives, remove that status."
+        },
+        {
+          "pt": "Quando uma mensagem já não exige ação, arquiva-a. Elimina apenas mensagens dispensáveis e cuja eliminação seja permitida pelas regras de retenção aplicáveis. Nunca uses o estado não lido como único lembrete de uma tarefa importante.",
+          "en": "When a message no longer requires action, archive it. Delete only messages you no longer need and whose deletion is permitted by applicable retention rules. Never use unread status as the sole reminder of an important task."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "pt": "6. Revisão semanal e conservação do histórico",
+        "en": "6. Weekly review and keeping your history"
+      },
+      "paragraphs": [
+        {
+          "pt": "Reserva dez minutos por semana para rever Follow Up, confirmar prazos e remover tarefas concluídas; verifica Waiting e envia lembretes quando apropriado; revê Read Through e descarta leituras que perderam relevância. Ajusta regras que tenham classificado mensagens incorretamente. A duração é uma sugestão e deve adaptar-se ao volume de trabalho.",
+          "en": "Set aside ten minutes each week to review Follow Up, check deadlines and remove completed tasks; review Waiting and send reminders when appropriate; review Read Through and discard reading that is no longer relevant. Adjust rules that have misclassified messages. The suggested duration should be adapted to your workload."
+        },
+        {
+          "pt": "A pasta Arquivo normal não equivale ao Arquivo Online (Online Archive) nem ao Arquivo Automático (AutoArchive). Se tens uma quota de armazenamento, consulta primeiro as opções de retenção e arquivo disponibilizadas pela organização. O AutoArchive pode mover mensagens para um ficheiro local PST, deixando-as fora da caixa de correio original e, potencialmente, das vistas de acompanhamento.",
+          "en": "The regular Archive folder is not the same as Online Archive or AutoArchive. If you have a storage quota, first check your organisation's retention and archive options. AutoArchive can move messages into a local PST file, taking them outside the original mailbox and potentially outside your tracking views."
+        },
+        {
+          "pt": "Não atives o AutoArchive indiscriminadamente. Um arquivo local não é, por si só, uma cópia de segurança. Em contas profissionais, respeita as políticas de proteção de dados, retenção e cópias de segurança; não exportes mensagens para ficheiros pessoais sem autorização. Protege as mensagens com estados pendentes de qualquer rotina de arquivo ou eliminação automática.",
+          "en": "Do not enable AutoArchive indiscriminately. A local archive is not, by itself, a backup. For work accounts, follow data protection, retention and backup policies; do not export messages to personal files without permission. Protect outstanding messages from any automatic archiving or deletion routine."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "pt": "7. Compatibilidade e segurança",
+        "en": "7. Compatibility and security"
+      },
+      "paragraphs": [
+        {
+          "pt": "O Outlook clássico disponibiliza as funcionalidades fundamentais utilizadas neste guia, embora a configuração varie com a versão e o tipo de conta. As contas IMAP podem não suportar categorias de cor e o novo Outlook tem diferenças nas Pastas de Pesquisa, Passos Rápidos e regras. Não assumes que todos os passos estão disponíveis no Outlook Web ou móvel.",
+          "en": "Classic Outlook provides the core features used in this guide, although configuration varies by version and account type. IMAP accounts may not support colour categories, and new Outlook differs in Search Folders, Quick Steps and rules. Do not assume every step is available in Outlook on the web or mobile."
+        },
+        {
+          "pt": "O Office 2016 terminou o suporte em outubro de 2025 e o Office 2021 e Office LTSC 2021 em outubro de 2026. Embora instalações antigas possam continuar a funcionar, já não devem ser consideradas uma solução segura e suportada. Prefere uma edição suportada do Outlook clássico e consulta o responsável de TI quando a migração depende da organização.",
+          "en": "Office 2016 reached end of support in October 2025, and Office 2021 and Office LTSC 2021 in October 2026. Although older installations may still work, they should no longer be treated as a secure, supported solution. Prefer a supported edition of classic Outlook and consult your IT administrator when migration depends on your organisation."
+        },
+        {
+          "pt": "Se não conseguires criar uma pasta de pesquisa personalizada, utiliza filtros de categorias, pastas dedicadas ou sinalizadores de seguimento compatíveis com a tua versão. Mantém o princípio: cada mensagem com ação pendente deve ter um lugar previsível e uma próxima ação clara.",
+          "en": "If you cannot create a custom Search Folder, use category filters, dedicated folders or follow-up flags compatible with your version. Keep the principle: every outstanding message should have a predictable place and a clear next action."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "pt": "8. Começar sem reorganizar todo o histórico",
+        "en": "8. Start without reorganising your entire history"
+      },
+      "paragraphs": [
+        {
+          "pt": "Cria as três categorias, as três vistas e os Passos Rápidos. Testa com um pequeno conjunto de mensagens e aplica o sistema primeiro aos novos e-mails. Processa o histórico gradualmente, priorizando pedidos ainda ativos. Não é necessário atingir zero mensagens no primeiro dia.",
+          "en": "Create the three categories, three views and Quick Steps. Test them with a small set of messages and apply the system to new email first. Process the backlog gradually, prioritising requests that are still active. You do not need to reach zero messages on day one."
+        },
+        {
+          "pt": "Ao fim de uma semana, verifica se consegues identificar rapidamente as tarefas que dependem de ti, os pedidos que aguardam resposta e as leituras adiadas. O sucesso do sistema mede-se pela confiança no acompanhamento, não pelo número de mensagens que permanecem na Caixa de Entrada.",
+          "en": "After a week, check whether you can quickly identify tasks that depend on you, requests awaiting a reply and postponed reading. The system's success is measured by confidence in your tracking, not the number of messages remaining in the Inbox."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": {
+        "pt": "Microsoft Support — Pastas de Pesquisa",
+        "en": "Microsoft Support — Search Folders"
+      },
+      "url": "https://support.microsoft.com/en-us/outlook/mail/use-search-folders-to-find-messages-or-other-outlook-items"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Support — Contagem total de mensagens",
+        "en": "Microsoft Support — Total message count"
+      },
+      "url": "https://support.microsoft.com/en-gb/outlook/mail/display-the-total-number-of-messages-in-a-folder-in-outlook"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Support — Passos Rápidos",
+        "en": "Microsoft Support — Quick Steps"
+      },
+      "url": "https://support.microsoft.com/pt-pt/outlook/mail/automate-common-or-repetitive-tasks-with-quick-steps-in-outlook"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Support — Regras de correio",
+        "en": "Microsoft Support — Email rules"
+      },
+      "url": "https://support.microsoft.com/en-us/outlook/mail/manage-email-messages-by-using-rules-in-outlook"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Support — Regras locais e de servidor",
+        "en": "Microsoft Support — Client-side and server-side rules"
+      },
+      "url": "https://support.microsoft.com/en-us/outlook/mail/edit-or-fix-a-broken-rule-in-outlook"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Support — Arquivar no Outlook",
+        "en": "Microsoft Support — Archive in Outlook"
+      },
+      "url": "https://support.microsoft.com/en-us/outlook/mail/archive-in-outlook-for-windows"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Support — Definições do Arquivo Automático",
+        "en": "Microsoft Support — AutoArchive settings"
+      },
+      "url": "https://support.microsoft.com/en-us/outlook/autoarchive-settings-explained"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Support — Outlook clássico e novo Outlook",
+        "en": "Microsoft Support — Classic and new Outlook feature comparison"
+      },
+      "url": "https://support.microsoft.com/en-us/outlook/getstarted/feature-comparison-between-new-outlook-and-classic-outlook"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Learn — Fim do suporte e migração do Office",
+        "en": "Microsoft Learn — Office end of support and migration"
+      },
+      "url": "https://learn.microsoft.com/en-us/microsoft-365-apps/end-of-support/plan-upgrade-older-versions-office"
+    }
+  ]
+}
