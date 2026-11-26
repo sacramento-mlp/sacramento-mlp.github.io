@@ -1,0 +1,7 @@
+---
+import View from '../../../views/ArticleDetail.astro';
+import { publishedArticles } from '../../../data/articles';
+export function getStaticPaths(){ return publishedArticles.map(article=>({params:{slug:article.slug},props:{article}})); }
+const {article}=Astro.props;
+---
+<View article={article}/>
