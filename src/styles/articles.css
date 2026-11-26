@@ -61,3 +61,13 @@
   .article-filter{padding:8px 12px}
   .article-search-input{max-width:none}
 }
+
+/* Structured editorial content */
+.article-table-scroll{max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:20px 0 12px}
+.article-table-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.article-table{width:100%;border-collapse:collapse;min-width:460px;text-align:left;font-size:.92rem;line-height:1.55}
+.article-table th,.article-table td{padding:12px 14px;vertical-align:top;border-bottom:1px solid var(--line);overflow-wrap:break-word}
+.article-table th{background:var(--soft);color:var(--text);font-weight:750}
+.article-table td{background:var(--panel);color:var(--text)}
+.article-table tr:last-child td{border-bottom:0}
+.article-sources li{margin:10px 0;overflow-wrap:anywhere}

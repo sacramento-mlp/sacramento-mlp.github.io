@@ -125,3 +125,19 @@ test('production deployment remains restricted to main', () => {
     assert.match(page, /<\/p><\/div><ContactPanel\s*\/><\/div><\/section>/, path);
   }
 });
+
+ test('Inbox Zero guide has complete bilingual content and explicit approval', () => {
+  const article = JSON.parse(read('src/data/inbox-zero-outlook.json'));
+  const approvals = JSON.parse(read('src/data/publication-approvals.json'));
+  assert.equal(article.published, true);
+  assert.ok(approvals.approvedSlugs.includes(article.slug));
+  const checkPair = pair => { for (const lang of ['en','pt']) assert.ok(typeof pair[lang] === 'string' && pair[lang].trim()); };
+  checkPair(article.title); checkPair(article.summary);
+  for (const section of article.sections) {
+    checkPair(section.heading); section.paragraphs.forEach(checkPair);
+    if (section.table) { section.table.headers.forEach(checkPair); for (const row of section.table.rows) { assert.equal(row.length, section.table.headers.length); row.forEach(checkPair); } }
+  }
+  for (const source of article.sources) { checkPair(source.label); assert.match(source.url, /^https:\/\/(support\.microsoft\.com|learn\.microsoft\.com)\//); }
+  assert.match(read('src/pages/artigos/[slug].astro'), /article\.sources/);
+  assert.match(read('src/pages/index.astro'), /latestArticle\.slug/);
+});

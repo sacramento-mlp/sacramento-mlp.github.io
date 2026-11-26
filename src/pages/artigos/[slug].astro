@@ -1,4 +1,5 @@
 ---
+import type { Article } from '../../data/articles';
 import SiteFooter from '../../components/SiteFooter.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import '../../styles/global.css';
@@ -6,7 +7,9 @@ export async function getStaticPaths(){
   const { publishedArticles } = await import('../../data/articles');
   return publishedArticles.map(article=>({params:{slug:article.slug},props:{article}}));
 }
-const { article } = Astro.props;
+const { article } = Astro.props as { article: Article };
+const categories: Record<Article['category'], { en: string; pt: string }> = {windows:{en:'Windows',pt:'Windows'},powershell:{en:'PowerShell',pt:'PowerShell'},security:{en:'Security',pt:'Segurança'},development:{en:'Development',pt:'Desenvolvimento'},productivity:{en:'Productivity',pt:'Produtividade'}};
+const category = categories[article.category];
 ---
 <!doctype html><html lang="en" data-theme="dark"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -30,8 +33,9 @@ const { article } = Astro.props;
 <a class="skip-link" href="#main-content" data-pt="Saltar para o conteúdo principal" data-en="Skip to main content">Skip to main content</a>
 <SiteHeader current="articles" />
 <main id="main-content" tabindex="-1"><article>
-<header class="article-detail-hero"><div class="wrap article-reading"><a class="back-link" href="/artigos/" data-pt="← Todos os artigos" data-en="← All articles">← All articles</a><div class="section-kicker"><span class="kicker-line"></span><span>{article.category.toUpperCase()} · <time datetime={article.date}>{article.date}</time> · {article.readMinutes} MIN</span></div><h1 data-pt={article.title.pt} data-en={article.title.en}>{article.title.en}</h1><p class="lead" data-pt={article.summary.pt} data-en={article.summary.en}>{article.summary.en}</p></div></header>
-<div class="wrap article-reading article-body">{article.sections.map(section=><section><h2 data-pt={section.heading.pt} data-en={section.heading.en}>{section.heading.en}</h2>{section.paragraphs.map(p=><p data-pt={p.pt} data-en={p.en}>{p.en}</p>)}</section>)}
+<header class="article-detail-hero"><div class="wrap article-reading"><a class="back-link" href="/artigos/" data-pt="← Todos os artigos" data-en="← All articles">← All articles</a><div class="section-kicker"><span class="kicker-line"></span><span data-pt={category.pt.toUpperCase()} data-en={category.en.toUpperCase()}>{category.en.toUpperCase()}</span><span>· <time datetime={article.date}>{article.date}</time> · {article.readMinutes} MIN</span></div><h1 data-pt={article.title.pt} data-en={article.title.en}>{article.title.en}</h1><p class="lead" data-pt={article.summary.pt} data-en={article.summary.en}>{article.summary.en}</p></div></header>
+<div class="wrap article-reading article-body">{article.sections.map(section=><section><h2 data-pt={section.heading.pt} data-en={section.heading.en}>{section.heading.en}</h2>{section.paragraphs.map(p=><p data-pt={p.pt} data-en={p.en}>{p.en}</p>)}{section.table && <div class="article-table-scroll" tabindex="0" role="region" aria-label={section.heading.en} data-aria-pt={section.heading.pt} data-aria-en={section.heading.en}><table class="article-table"><thead><tr>{section.table.headers.map(h=><th scope="col" data-pt={h.pt} data-en={h.en}>{h.en}</th>)}</tr></thead><tbody>{section.table.rows.map(row=><tr>{row.map(cell=><td data-pt={cell.pt} data-en={cell.en}>{cell.en}</td>)}</tr>)}</tbody></table></div>}</section>)}
+{article.sources?.length && <section class="article-sources"><h2 data-pt="Referências oficiais" data-en="Official references">Official references</h2><ul>{article.sources.map(source=><li><a href={source.url} data-pt={source.label.pt} data-en={source.label.en}>{source.label.en}</a></li>)}</ul></section>}
 <div class="article-end"><p data-pt="Este conteúdo é informativo. Antes de alterar um sistema, confirma as opções disponíveis e mantém cópias de segurança adequadas." data-en="This content is informational. Before changing a system, verify the available options and keep appropriate backups.">This content is informational. Before changing a system, verify the available options and keep appropriate backups.</p><a class="btn secondary" href="/artigos/" data-pt="Voltar aos artigos" data-en="Back to articles">Back to articles</a></div></div>
 </article></main><SiteFooter />
 <script is:inline src="/js/preferences.js" defer></script></body></html>
