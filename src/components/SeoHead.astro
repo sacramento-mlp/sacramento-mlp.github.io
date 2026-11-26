@@ -1,5 +1,5 @@
 ---
-import { origin, locale, englishPath, localPath, languageTag } from '../lib/locale';
+import { origin, locale, englishPath, localPath, languageTag, pagePath } from '../lib/locale';
 interface Props {
   title: string;
   description: string;
@@ -9,7 +9,7 @@ interface Props {
 }
 const {title,description,kind='page',published,headline}=Astro.props;
 const lang=locale(Astro.url.pathname);
-const path=englishPath(Astro.url.pathname);
+const path=pagePath(englishPath(Astro.url.pathname));
 const en=origin+localPath(path,'en');
 const pt=origin+localPath(path,'pt');
 const canonical=lang==='pt'?pt:en;
@@ -37,4 +37,4 @@ const structured=JSON.stringify({'@context':'https://schema.org','@graph':graph}
 <meta name="twitter:description" content={description}/>
 {published && <meta property="article:published_time" content={published}/>}
 <title>{title}</title>
-<script type="application/ld+json" set:html={structured} />
+<script is:inline type="application/ld+json" set:html={structured}></script>
