@@ -13,14 +13,17 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
-          node-version: '22'
+          node-version: '24'
+          check-latest: true
       - name: Install dependencies
         run: npm ci
+      - name: Require clean dependency audit
+        run: npm audit --audit-level=low
       - name: Regression tests
         run: npm test
       - name: Astro and TypeScript checks
@@ -31,6 +34,36 @@ jobs:
         run: npm run build
       - name: Verify distribution
         run: npm run verify:dist
+      - name: Install isolated browser and Lighthouse tools
+        run: npm install --prefix "$RUNNER_TEMP/seo-tools" --no-audit --no-fund --save-exact playwright@1.65.1 lighthouse@13.6.0
+      - name: Browser verification and lab SEO audit
+        env:
+          SEO_TOOLS: ${{ runner.temp }}/seo-tools
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory dist > "$RUNNER_TEMP/seo-server.log" 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          node scripts/verify-browser.mjs
+          export CHROME_PATH="$(command -v google-chrome)"
+          for page in home article-pt; do
+            if [ "$page" = home ]; then route=/; else route=/pt/artigos/inbox-zero-outlook/; fi
+            for device in mobile desktop; do
+              flags=()
+              if [ "$device" = desktop ]; then flags+=(--preset=desktop); fi
+              "$SEO_TOOLS/node_modules/.bin/lighthouse" "http://127.0.0.1:4173$route" --chrome-flags="--headless --no-sandbox" "${flags[@]}" --quiet --output=json --output-path="seo-evidence/lighthouse-$page-$device.json"
+            done
+          done
+          node --input-type=module -e 'import {readdirSync,readFileSync} from "node:fs"; for(const f of readdirSync("seo-evidence").filter(f=>f.startsWith("lighthouse-")&&f.endsWith(".json"))){const r=JSON.parse(readFileSync("seo-evidence/"+f)); console.log(f,JSON.stringify(Object.fromEntries(Object.entries(r.categories).map(([k,v])=>[k,v.score===null?null:Math.round(v.score*100)]))))}'
+      - name: Retain browser and Lighthouse evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: seo-browser-evidence
+          path: seo-evidence/
+          if-no-files-found: warn
+          retention-days: 7
       - name: Retain generated lockfile and build
         uses: actions/upload-artifact@v6
         with:

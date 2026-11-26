@@ -18,7 +18,7 @@
     .trim();
 
   function update() {
-    const lang = document.documentElement.lang === 'pt' ? 'pt' : 'en';
+    const lang = document.documentElement.lang.toLowerCase().startsWith('pt') ? 'pt' : 'en';
     const term = normalize(search.value);
     let visible = 0;
 
@@ -52,10 +52,10 @@
     search.focus();
   });
   document.addEventListener('site:languagechange', () => {
-    const lang = document.documentElement.lang === 'pt' ? 'pt' : 'en';
+    const lang = document.documentElement.lang.toLowerCase().startsWith('pt') ? 'pt' : 'en';
     search.placeholder = search.getAttribute('data-placeholder-' + lang) || '';
     update();
   });
-  search.placeholder = search.getAttribute('data-placeholder-' + (document.documentElement.lang === 'pt' ? 'pt' : 'en')) || '';
+  search.placeholder = search.getAttribute('data-placeholder-' + (document.documentElement.lang.toLowerCase().startsWith('pt') ? 'pt' : 'en')) || '';
   update();
 })();

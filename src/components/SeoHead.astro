@@ -1,0 +1,40 @@
+---
+import { origin, locale, englishPath, localPath, languageTag, pagePath } from '../lib/locale';
+interface Props {
+  title: string;
+  description: string;
+  kind?: 'home' | 'profile' | 'article' | 'page';
+  published?: string;
+  headline?: string;
+}
+const {title,description,kind='page',published,headline}=Astro.props;
+const lang=locale(Astro.url.pathname);
+const path=pagePath(englishPath(Astro.url.pathname));
+const en=origin+localPath(path,'en');
+const pt=origin+localPath(path,'pt');
+const canonical=lang==='pt'?pt:en;
+const person={'@type':'Person','@id':origin+'/#person',name:'Mário Sacramento',url:origin+localPath('/cv/',lang),sameAs:['https://github.com/sacramento-mlp']};
+const article=kind==='article';
+const page = article ? {'@type':'Article',headline:headline??title,description,datePublished:published,author:person,mainEntityOfPage:canonical,inLanguage:languageTag(lang)} : kind==='profile' ? {'@type':'ProfilePage',name:title,mainEntity:person,url:canonical,inLanguage:languageTag(lang)} : kind==='home' ? {'@type':'WebSite',name:'Mário Sacramento',url:canonical,inLanguage:languageTag(lang),publisher:person} : {'@type':'WebPage',name:title,description,url:canonical,inLanguage:languageTag(lang)};
+const graph: object[] = [page];
+if(article) graph.push({'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:lang==='pt'?'Página inicial':'Home',item:origin+localPath('/',lang)},{'@type':'ListItem',position:2,name:lang==='pt'?'Artigos':'Articles',item:origin+localPath('/artigos/',lang)},{'@type':'ListItem',position:3,name:headline??title,item:canonical}]});
+const structured=JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\\u003c');
+---
+<meta name="description" content={description}/>
+<link rel="canonical" href={canonical}/>
+<link rel="alternate" hreflang="en" href={en}/>
+<link rel="alternate" hreflang="pt-PT" href={pt}/>
+<link rel="alternate" hreflang="x-default" href={en}/>
+<meta property="og:type" content={article?'article':kind==='profile'?'profile':'website'}/>
+<meta property="og:title" content={title}/>
+<meta property="og:description" content={description}/>
+<meta property="og:url" content={canonical}/>
+<meta property="og:site_name" content="Mário Sacramento"/>
+<meta property="og:locale" content={lang==='pt'?'pt_PT':'en_US'}/>
+<meta property="og:locale:alternate" content={lang==='pt'?'en_US':'pt_PT'}/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content={title}/>
+<meta name="twitter:description" content={description}/>
+{published && <meta property="article:published_time" content={published}/>}
+<title>{title}</title>
+<script is:inline type="application/ld+json" set:html={structured}></script>

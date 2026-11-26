@@ -1,4 +1,9 @@
 ---
+import { locale, localPath, englishPath, pagePath } from '../lib/locale';
+const lang=locale(Astro.url.pathname);
+const link=(path: string)=>localPath(path,lang);
+const other=lang==='pt'?'en':'pt';
+const alternate=localPath(pagePath(englishPath(Astro.url.pathname)),other);
 interface Props {
   current?: 'home' | 'cv' | 'products' | 'articles';
 }
@@ -13,18 +18,18 @@ const items = [
 ];
 ---
 <header class="top">
-  <nav class="wrap nav" aria-label="Main navigation" data-aria-pt="Navegação principal" data-aria-en="Main navigation">
-    <a class="brand" href={atHome ? '#inicio' : '/'} aria-label="Mário Sacramento — home" data-aria-pt="Mário Sacramento — página inicial" data-aria-en="Mário Sacramento — home">
+  <nav class="wrap nav" aria-label={lang==='pt'?'Navegação principal':'Main navigation'} data-aria-pt="Navegação principal" data-aria-en="Main navigation">
+    <a class="brand" href={atHome ? '#inicio' : link('/')} aria-label={lang==='pt'?'Mário Sacramento — página inicial':'Mário Sacramento — home'} data-aria-pt="Mário Sacramento — página inicial" data-aria-en="Mário Sacramento — home">
       <img class="brand-logo" src="/brand/ms-logo.png" width="64" height="44" alt="" />
       <span class="brand-name">Mário Sacramento</span>
     </a>
     <div class="navlinks">
       {items.map(item =>
-        <a href={item.href} data-pt={item.pt} data-en={item.en} aria-current={item.active ? 'page' : undefined}>{item.en}</a>
+        <a href={link(item.href)} data-pt={item.pt} data-en={item.en} aria-current={item.active ? 'page' : undefined}>{item[lang]}</a>
       )}
       <div class="nav-controls">
-        <button class="switch" id="lang" type="button" aria-label="Change language">PT</button>
-        <button class="switch" id="theme" type="button" aria-label="Toggle light and dark theme">◐</button>
+        <a class="switch language-switch" id="lang" href={alternate} hreflang={other==='pt'?'pt-PT':'en'} lang={other==='pt'?'pt-PT':'en'} aria-label={lang==='pt'?'Mudar idioma para inglês':'Switch language to Portuguese'}>{other.toUpperCase()}</a>
+        <button class="switch" id="theme" type="button" aria-label={lang==='pt'?'Ativar tema claro':'Switch to light theme'}>◐</button>
       </div>
     </div>
   </nav>

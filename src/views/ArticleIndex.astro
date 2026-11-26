@@ -1,0 +1,52 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/global.css';
+import { publishedArticles } from '../data/articles';
+const categoryLabels: Record<string,{en:string;pt:string}> = {
+  windows:{en:'Windows',pt:'Windows'},powershell:{en:'PowerShell',pt:'PowerShell'},
+  security:{en:'Security',pt:'Segurança'},development:{en:'Development',pt:'Desenvolvimento'},productivity:{en:'Productivity',pt:'Produtividade'}
+};
+import SeoHead from '../components/SeoHead.astro';
+import { locale, localPath, languageTag } from '../lib/locale';
+const lang=locale(Astro.url.pathname);
+const link=(path: string)=>localPath(path,lang);
+---
+<!doctype html><html lang={languageTag(lang)} data-theme="dark"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" type="image/png" href="/brand/ms-logo.png"/><meta name="theme-color" content="#080f1d"/>
+<SeoHead title={lang==='pt'?'Artigos e guias técnicos | Mário Sacramento':'Articles & technical guides | Mário Sacramento'} description={lang==='pt'?'Guias práticos de Outlook, produtividade, Windows, PowerShell, segurança e desenvolvimento de software.':'Practical guides about Outlook, productivity, Windows, PowerShell, security and software development.'}/><link rel="alternate" type="application/rss+xml" title="Mário Sacramento" href={link('/rss.xml')}/>
+<script is:inline src="/js/preferences-init.js"></script>
+</head><body class="articles-page">
+<a class="skip-link" href="#main-content" data-pt="Saltar para o conteúdo principal" data-en="Skip to main content">{lang==='pt'?("Saltar para o conteúdo principal"):("Skip to main content")}</a>
+<SiteHeader current="articles" />
+<main id="main-content" tabindex="-1">
+<section class="articles-hero"><div class="wrap"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="CONHECIMENTO / RECURSOS" data-en="KNOWLEDGE / RESOURCES">{lang==='pt'?("CONHECIMENTO / RECURSOS"):("KNOWLEDGE / RESOURCES")}</span></div><h1 data-pt="Artigos & Guias" data-en="Articles & Guides">{lang==='pt'?("Artigos & Guias"):("Articles & Guides")}</h1><p class="lead" data-pt="Guias práticos, explicações técnicas e recursos para trabalhar melhor com tecnologia." data-en="Practical guides, technical explanations and resources to help you work better with technology.">{lang==='pt'?("Guias práticos, explicações técnicas e recursos para trabalhar melhor com tecnologia."):("Practical guides, technical explanations and resources to help you work better with technology.")}</p></div></section>
+<section class="wrap section-space"><div class="section-kicker"><span class="kicker-line"></span><span data-pt="BIBLIOTECA" data-en="LIBRARY">{lang==='pt'?("BIBLIOTECA"):("LIBRARY")}</span></div>
+{publishedArticles.length > 0 ?
+<div class="article-library" id="article-library">
+  <div class="article-filters" role="search" aria-label={lang==='pt'?("Pesquisar na biblioteca de artigos"):("Search the article library")} data-aria-pt="Pesquisar na biblioteca de artigos" data-aria-en="Search the article library">
+    <label class="article-search-label" for="article-search" data-pt="Pesquisar artigos" data-en="Search articles">{lang==='pt'?("Pesquisar artigos"):("Search articles")}</label>
+    <input id="article-search" class="article-search-input" type="search" autocomplete="off" placeholder={lang==='pt'?"Pesquisar títulos, temas e resumos...":"Search titles, topics and summaries..."} data-placeholder-pt="Pesquisar títulos, temas e resumos..." data-placeholder-en="Search titles, topics and summaries..." />
+    <div class="article-category-filters" role="group" aria-label={lang==='pt'?("Filtrar por categoria"):("Filter by category")} data-aria-pt="Filtrar por categoria" data-aria-en="Filter by category">
+      <button class="article-filter" type="button" data-filter="all" aria-pressed="true" data-pt="Todos" data-en="All">{lang==='pt'?("Todos"):("All")}</button>
+      {Object.entries(categoryLabels).map(([key,label])=>
+        <button class="article-filter" type="button" data-filter={key} aria-pressed="false" data-pt={label.pt} data-en={label.en}>{lang==='pt'?(label.pt):(label.en)}</button>
+      )}
+    </div>
+    <p class="article-count" id="article-count" role="status" aria-live="polite" aria-atomic="true"></p>
+  </div>
+  <div class="article-grid" id="article-grid">
+    {publishedArticles.map(article=><a class="article-card" href={link(`/artigos/${article.slug}/`)} data-category={article.category} data-search-en={`${article.title.en} ${article.summary.en} ${categoryLabels[article.category].en}`} data-search-pt={`${article.title.pt} ${article.summary.pt} ${categoryLabels[article.category].pt}`}><span class="article-card-category" data-pt={categoryLabels[article.category].pt} data-en={categoryLabels[article.category].en}>{lang==='pt'?(categoryLabels[article.category].pt):(categoryLabels[article.category].en)}</span><h2 data-pt={article.title.pt} data-en={article.title.en}>{lang==='pt'?(article.title.pt):(article.title.en)}</h2><p data-pt={article.summary.pt} data-en={article.summary.en}>{lang==='pt'?(article.summary.pt):(article.summary.en)}</p><div class="article-card-footer"><span><time datetime={article.date}>{article.date}</time> · {article.readMinutes} min</span><span data-pt="Ler artigo ↗" data-en="Read article ↗">{lang==='pt'?("Ler artigo ↗"):("Read article ↗")}</span></div></a>)}
+  </div>
+  <div class="articles-no-results" id="articles-no-results" hidden>
+    <p data-pt="Não foram encontrados artigos com estes critérios." data-en="No articles match your search.">{lang==='pt'?("Não foram encontrados artigos com estes critérios."):("No articles match your search.")}</p>
+    <button class="article-reset" type="button" id="article-reset" data-pt="Limpar filtros" data-en="Clear filters">{lang==='pt'?("Limpar filtros"):("Clear filters")}</button>
+  </div>
+</div>
+:<div class="articles-empty"><span class="articles-empty-icon" aria-hidden="true">✦</span><h2 data-pt="Os primeiros artigos estão a ser preparados." data-en="The first articles are being prepared.">{lang==='pt'?("Os primeiros artigos estão a ser preparados."):("The first articles are being prepared.")}</h2><p class="muted" data-pt="Estamos a preparar conteúdos úteis sobre Windows, PowerShell, segurança e desenvolvimento. Os artigos serão publicados depois de revistos." data-en="Useful content about Windows, PowerShell, security and development is in preparation. Articles will be published after review.">{lang==='pt'?("Estamos a preparar conteúdos úteis sobre Windows, PowerShell, segurança e desenvolvimento. Os artigos serão publicados depois de revistos."):("Useful content about Windows, PowerShell, security and development is in preparation. Articles will be published after review.")}</p><a class="btn secondary" href={link("/")} data-pt="Explorar o portfólio" data-en="Explore the portfolio">{lang==='pt'?("Explorar o portfólio"):("Explore the portfolio")}</a></div>}
+</section>
+</main><SiteFooter />
+<script is:inline src="/js/preferences.js" defer></script>
+{publishedArticles.length > 0 && <script is:inline src="/js/articles-filter.js" defer></script>}
+</body></html>
