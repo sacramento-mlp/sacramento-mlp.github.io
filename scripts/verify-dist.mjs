@@ -66,6 +66,14 @@ if (!Array.isArray(approvals) || approvals.some(slug => typeof slug !== 'string'
   failures.push('Missing or invalid publication-approvals.json');
 }
 const approvedPaths = new Set((Array.isArray(approvals) ? approvals : []).map(slug => '/artigos/' + slug + '/'));
+for (const route of approvedPaths) {
+  const file = routeFile(route);
+  if (!existsSync(file)) { failures.push(`Missing approved article route: ${route}`); continue; }
+  const html = readFileSync(file, 'utf8');
+  if (!/<h1[^>]*data-pt="[^"]+"[^>]*data-en="[^"]+"/.test(html)) failures.push(`Missing bilingual article heading: ${route}`);
+  if (!html.includes('/js/preferences.js')) failures.push(`Missing article language switch: ${route}`);
+  if (route === '/artigos/inbox-zero-outlook/' && (!html.includes('article-table') || !html.includes('article-sources'))) failures.push('Missing Inbox Zero tables or references');
+}
 const listingFile = routeFile('/artigos/');
 if (existsSync(listingFile)) {
   const listing = readFileSync(listingFile, 'utf8');
@@ -93,6 +101,7 @@ if (existsSync(robotsFile)) {
 }
 if (existsSync(sitemapFile)) {
   const sitemap = readFileSync(sitemapFile, 'utf8');
+  for (const route of approvedPaths) if (!sitemap.includes('<loc>' + origin + route + '</loc>')) failures.push('Missing approved sitemap article: ' + route);
   for (const route of requiredRoutes) {
     if (!sitemap.includes('<loc>' + origin + route + '</loc>')) failures.push(`Missing sitemap location: ${route}`);
   }
@@ -111,6 +120,7 @@ if (existsSync(sitemapFile)) {
 }
 if (existsSync(rssFile)) {
   const feed = readFileSync(rssFile, 'utf8');
+  for (const route of approvedPaths) if (!feed.includes('<link>' + origin + route + '</link>')) failures.push('Missing approved RSS article: ' + route);
   if (!feed.includes('<rss version="2.0">') || !feed.includes('<channel>')) failures.push('RSS feed missing required channel structure');
   for (const match of feed.matchAll(/<item>[\s\S]*?<link>([^<]+)<\/link>[\s\S]*?<\/item>/g)) {
     const url = match[1].replace(/&amp;/g, '&');
