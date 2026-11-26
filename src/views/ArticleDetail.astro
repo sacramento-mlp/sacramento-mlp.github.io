@@ -1,0 +1,28 @@
+---
+import type { Article } from '../data/articles';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/global.css';
+const { article } = Astro.props as { article: Article };
+const categories: Record<Article['category'], { en: string; pt: string }> = {windows:{en:'Windows',pt:'Windows'},powershell:{en:'PowerShell',pt:'PowerShell'},security:{en:'Security',pt:'Segurança'},development:{en:'Development',pt:'Desenvolvimento'},productivity:{en:'Productivity',pt:'Produtividade'}};
+const category = categories[article.category];
+import SeoHead from '../components/SeoHead.astro';
+import { locale, localPath, languageTag } from '../lib/locale';
+const lang=locale(Astro.url.pathname);
+const link=(path: string)=>localPath(path,lang);
+---
+<!doctype html><html lang={languageTag(lang)} data-theme="dark"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" type="image/png" href="/brand/ms-logo.png"/><meta name="theme-color" content="#080f1d"/>
+<SeoHead kind="article" title={article.title[lang]+' | Mário Sacramento'} description={article.summary[lang]} headline={article.title[lang]} published={article.date}/>
+<script is:inline src="/js/preferences-init.js"></script>
+</head><body class="articles-page">
+<a class="skip-link" href="#main-content" data-pt="Saltar para o conteúdo principal" data-en="Skip to main content">{lang==='pt'?("Saltar para o conteúdo principal"):("Skip to main content")}</a>
+<SiteHeader current="articles" />
+<main id="main-content" tabindex="-1"><article>
+<header class="article-detail-hero"><div class="wrap article-reading"><a class="back-link" href={link("/artigos/")} data-pt="← Todos os artigos" data-en="← All articles">{lang==='pt'?("← Todos os artigos"):("← All articles")}</a><div class="section-kicker"><span class="kicker-line"></span><span data-pt={category.pt.toUpperCase()} data-en={category.en.toUpperCase()}>{lang==='pt'?(category.pt.toUpperCase()):(category.en.toUpperCase())}</span><span>· <time datetime={article.date}>{article.date}</time> · {article.readMinutes} MIN</span></div><h1 data-pt={article.title.pt} data-en={article.title.en}>{lang==='pt'?(article.title.pt):(article.title.en)}</h1><p class="article-byline"><a href={link('/cv/')}>Mário Sacramento</a></p><p class="lead" data-pt={article.summary.pt} data-en={article.summary.en}>{lang==='pt'?(article.summary.pt):(article.summary.en)}</p></div></header>
+<div class="wrap article-reading article-body">{article.sections.map(section=><section><h2 data-pt={section.heading.pt} data-en={section.heading.en}>{lang==='pt'?(section.heading.pt):(section.heading.en)}</h2>{section.paragraphs.map(p=><p data-pt={p.pt} data-en={p.en}>{lang==='pt'?(p.pt):(p.en)}</p>)}{section.table && <div class="article-table-scroll" tabindex="0" role="region" aria-label={lang==='pt'?(section.heading.pt):(section.heading.en)} data-aria-pt={section.heading.pt} data-aria-en={section.heading.en}><table class="article-table"><thead><tr>{section.table.headers.map(h=><th scope="col" data-pt={h.pt} data-en={h.en}>{lang==='pt'?(h.pt):(h.en)}</th>)}</tr></thead><tbody>{section.table.rows.map(row=><tr>{row.map(cell=><td data-pt={cell.pt} data-en={cell.en}>{lang==='pt'?(cell.pt):(cell.en)}</td>)}</tr>)}</tbody></table></div>}</section>)}
+{article.sources?.length && <section class="article-sources"><h2 data-pt="Referências oficiais" data-en="Official references">{lang==='pt'?("Referências oficiais"):("Official references")}</h2><ul>{article.sources.map(source=><li><a href={source.url} data-pt={source.label.pt} data-en={source.label.en}>{lang==='pt'?(source.label.pt):(source.label.en)}</a></li>)}</ul></section>}
+<div class="article-end"><p data-pt="Este conteúdo é informativo. Antes de alterar um sistema, confirma as opções disponíveis e mantém cópias de segurança adequadas." data-en="This content is informational. Before changing a system, verify the available options and keep appropriate backups.">{lang==='pt'?("Este conteúdo é informativo. Antes de alterar um sistema, confirma as opções disponíveis e mantém cópias de segurança adequadas."):("This content is informational. Before changing a system, verify the available options and keep appropriate backups.")}</p><a class="btn secondary" href={link("/artigos/")} data-pt="Voltar aos artigos" data-en="Back to articles">{lang==='pt'?("Voltar aos artigos"):("Back to articles")}</a></div></div>
+</article></main><SiteFooter />
+<script is:inline src="/js/preferences.js" defer></script></body></html>
