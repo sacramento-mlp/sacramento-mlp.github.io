@@ -12,3 +12,7 @@ export function localPath(pathname: string, lang: Language): string {
   return lang === 'pt' ? '/pt' + path : path;
 }
 export function languageTag(lang: Language) { return lang === 'pt' ? 'pt-PT' : 'en'; }
+
+export function pagePath(pathname: string): string {
+  return pathname.endsWith('/') ? pathname : pathname+'/';
+}
