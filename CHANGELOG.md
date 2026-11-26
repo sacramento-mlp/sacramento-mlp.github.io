@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.0 — SEO release candidate
+
+- Separate, statically rendered English and Portuguese URLs using shared Astro views.
+- Localized titles, descriptions, canonical URLs, reciprocal hreflang, sitemap and RSS feeds.
+- Structured data for the professional profile, website and approved articles.
+- Crawlable language links and expanded static-build SEO checks.
+- Existing English routes, editorial approvals, design and theme choices preserved.
+- Search Console ownership and live indexing remain external verification steps.
+
 ## 1.0.1
 
 - Shared contact panel on homepage and résumé, with visible professional email, accessible copy action, mailto and GitHub links.
