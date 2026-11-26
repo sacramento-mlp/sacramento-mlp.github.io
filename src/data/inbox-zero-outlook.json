@@ -294,8 +294,8 @@
       },
       "paragraphs": [
         {
-          "pt": "O Outlook clássico disponibiliza as funcionalidades fundamentais utilizadas neste guia, embora a configuração varie com a versão e o tipo de conta. As contas IMAP podem não suportar categorias de cor e o novo Outlook tem diferenças nas Pastas de Pesquisa, Passos Rápidos e regras. Não assumes que todos os passos estão disponíveis no Outlook Web ou móvel.",
-          "en": "Classic Outlook provides the core features used in this guide, although configuration varies by version and account type. IMAP accounts may not support colour categories, and new Outlook differs in Search Folders, Quick Steps and rules. Do not assume every step is available in Outlook on the web or mobile."
+          "pt": "O Outlook clássico disponibiliza as funcionalidades fundamentais utilizadas neste guia, embora a configuração varie com a versão e o tipo de conta. As contas IMAP não suportam categorias de cor e o novo Outlook tem diferenças nas Pastas de Pesquisa, Passos Rápidos e regras. Não assumes que todos os passos estão disponíveis no Outlook Web ou móvel.",
+          "en": "Classic Outlook provides the core features used in this guide, although configuration varies by version and account type. IMAP accounts do not support colour categories, and new Outlook differs in Search Folders, Quick Steps and rules. Do not assume every step is available in Outlook on the web or mobile."
         },
         {
           "pt": "O Office 2016 terminou o suporte em outubro de 2025 e o Office 2021 e Office LTSC 2021 em outubro de 2026. Embora instalações antigas possam continuar a funcionar, já não devem ser consideradas uma solução segura e suportada. Prefere uma edição suportada do Outlook clássico e consulta o responsável de TI quando a migração depende da organização.",
@@ -387,6 +387,20 @@
         "en": "Microsoft Learn — Office end of support and migration"
       },
       "url": "https://learn.microsoft.com/en-us/microsoft-365-apps/end-of-support/plan-upgrade-older-versions-office"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Support — Categorias de cor",
+        "en": "Microsoft Support — Colour categories"
+      },
+      "url": "https://support.microsoft.com/en-us/outlook/mail/create-and-assign-color-categories-in-outlook"
+    },
+    {
+      "label": {
+        "pt": "Microsoft Support — Boas práticas do Outlook",
+        "en": "Microsoft Support — Outlook best practices"
+      },
+      "url": "https://support.microsoft.com/en-us/outlook/best-practices-for-outlook"
     }
   ]
 }
