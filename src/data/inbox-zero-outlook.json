@@ -128,8 +128,8 @@
       },
       "paragraphs": [
         {
-          "pt": "Em Base > Passos Rápidos > Criar Novo (Home > Quick Steps > Create New), configura os quatro fluxos indicados abaixo. Os atalhos atribuíveis encontram-se no intervalo Ctrl + Shift + 5 a 9; propomos utilizar 5 a 8. Confirma a disponibilidade das ações e dos atalhos na tua instalação.",
-          "en": "Under Home > Quick Steps > Create New, configure the four workflows shown below. Assignable shortcuts are in the Ctrl + Shift + 5 to 9 range; we suggest using 5 to 8. Check that the actions and shortcuts are available in your installation."
+          "pt": "Em Base > Passos Rápidos > Criar Novo (Home > Quick Steps > Create New), configura os quatro fluxos indicados abaixo. No Outlook clássico, seleciona um atalho disponível na caixa Tecla de atalho; os atalhos 1 a 4 do método original podem estar disponíveis. Propomos Ctrl + Shift + 5 a 8 como exemplos, dentro do intervalo 5 a 9 documentado pela Microsoft para o novo Outlook e Outlook na Web. Confirma sempre as ações e os atalhos disponíveis na tua instalação.",
+          "en": "Under Home > Quick Steps > Create New, configure the four workflows shown below. In classic Outlook, choose an available shortcut in the Shortcut key box; shortcuts 1 to 4 from the original method may be available. We suggest Ctrl + Shift + 5 to 8 as examples, within the 5 to 9 range documented by Microsoft for new Outlook and Outlook on the web. Always check which actions and shortcuts are available in your installation."
         },
         {
           "pt": "Antes de mudar uma mensagem de estado, remove manualmente a categoria anterior, se existir. Não uses indiscriminadamente a opção Limpar categorias quando tens etiquetas de projeto ou outras classificações que precisas de conservar. A conclusão de uma tarefa e a marcação de uma mensagem como lida são ações distintas.",
