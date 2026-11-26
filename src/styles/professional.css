@@ -35,3 +35,7 @@
 @media(max-width:950px){.hero-shell .hero-grid{grid-template-columns:1fr}.cv-page .cv-hero-grid{grid-template-columns:1fr}.cv-page .cv-identity{display:none}}
 @media(max-width:760px){.hero-shell .hero-grid{gap:28px}.hero-shell .hero h1,.cv-page .cv-hero h1{font-size:clamp(1.95rem,7vw,2.8rem)}.cv-page .education-grid{grid-template-columns:1fr}.top .navlinks>a,.top .switch{min-height:44px}.top .brand-name{white-space:normal}.career-timeline{padding-left:15px}.career-entry::before{left:-23px}.cv-page .cv-hero{padding-block:42px}.contact-inner .actions{margin-top:0}}
 @media(max-width:360px){.hero-shell .hero .actions .btn{flex-basis:100%}.career-facts>div{flex-wrap:wrap}.career-facts dd{text-align:left}}
+
+.language-switch{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font:inherit;line-height:1.2}
+.language-switch:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.article-byline{font-size:.92rem;color:var(--muted);margin:12px 0}
